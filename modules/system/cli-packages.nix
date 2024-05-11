@@ -1,0 +1,19 @@
+{pkgs, pkgs-unstable, ...}: {
+  users.users.carl.packages = with pkgs; [
+    cowsay
+      nix-search-cli
+      asciiquarium
+      hyfetch
+      btop
+      zoxide
+      spotify-tui
+      gitui
+      lolcat
+  ];
+  fonts.packages = with pkgs; [nerdfonts];
+  environment.systemPackages = with pkgs; [
+    git
+    pkgs-unstable.nh
+    nano
+  ];
+}
