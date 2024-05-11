@@ -4,6 +4,7 @@
       nix-search-cli
       asciiquarium
       hyfetch
+      fastfetch
       btop
       zoxide
       spotify-tui
