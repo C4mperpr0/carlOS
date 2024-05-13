@@ -26,7 +26,7 @@
     };
     gaming.enable = true;
     social.enable = true;
-    cli-packages.enable = true;
+    ##cli-packages.enable = true;
     ui-utils.enable = true;
   };
 
