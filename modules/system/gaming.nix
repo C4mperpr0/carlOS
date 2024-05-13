@@ -1,17 +1,22 @@
 {
   pkgs,
+  lib,
+  config,
   ...
-}: {
-  users.users.carl.packages = with pkgs; [
-    steam
-    discord
-    supertuxkart
-    nxengine-evo
-  ];
-  fonts.packages = with pkgs; [nerdfonts];
-  environment.systemPackages = with pkgs; [
-    git
-    pkgs-unstable.nh
-    nano
-  ];
+}: let
+  cfg = config.nixosModules.gaming;
+in {
+  options = {
+    nixosModules.gaming = {
+      enable = lib.mkEnableOption "enable gaming programs";
+    };
+  };
+  config = lib.mkIf cfg.enable {
+    users.users.carl.packages = with pkgs; [
+      steam
+      discord
+      supertuxkart
+      nxengine-evo
+    ];
+  };
 }
