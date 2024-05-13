@@ -59,7 +59,7 @@
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
-  #hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   # Make steam work
   hardware.opengl.driSupport32Bit = true;

@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-unstable,
   config,
   ...
 }: let
@@ -15,11 +16,19 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs;
       [
+        firefox
+        pkgs-unstable.obsidian
+        kate
         freecad
         gimp
         blender
         thunderbird
         libreoffice
+        bitwarden
+        wacomtablet
+        ffmpeg-full
+        speedcrunch
+        # obsidian ?????? unstable??? jokab?????
       ]
       ++ lib.optionals cfg.latex.enable
       [
