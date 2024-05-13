@@ -11,6 +11,10 @@
     fastfetch
     btop
     zoxide
+    speedtest-cli
+    unzip
+    wget
+    curl
     spotify-tui
     gitui
     lolcat

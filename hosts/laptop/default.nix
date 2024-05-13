@@ -12,10 +12,24 @@
     ./hardware-configuration.nix
   ];
 
-  nixosModules.office = {
-    enable = true;
-    latex.enable = true;
+  nixosModules = {
+    office = {
+      enable = true;
+      latex.enable = true;
+      media.enable = true;
+    };
+    programming = {
+      enable = true;
+      game-developement.enable = true;
+      virtualization.enable = true;
+      basic-languages.enable = true;
+    };
+    gaming.enable = true;
+    social.enable = true;
+    cli-packages.enable = true;
+    ui-utils.enable = true;
   };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -44,8 +58,6 @@
       } # SuperTuxKart
     ];
   };
-  programs.kdeconnect.enable = true;
-
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -72,60 +84,6 @@
     isNormalUser = true;
     description = "Carl";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      firefox
-      whatsapp-for-linux
-      signal-desktop
-      wacomtablet
-      kate
-      discord
-      spotify
-      steam
-      godot_4
-      vscodium
-      rustc
-      ffmpeg-full
-      pkgs-unstable.obsidian
-      bitwarden
-      xcowsay
-      qdirstat
-      superTuxKart
-      qemu_full
-      qtemu
-      libsForQt5.kdeconnect-kde
-      vlc
-      gparted
-      jdk
-      systemdgenie
-      nxengine-evo
-      anbox
-      quickemu
-      poetry
-      sptlrx
-      jupyter
-      speedcrunch
-      lf
-      winePackages.stableFull
-      qgis # for telematics systems (univsersity)
-
-      (python3.withPackages (ps:
-        with ps; [
-          requests
-          numpy
-          cbonsai
-          matplotlib
-          pandas
-          pynput
-          selenium
-          beautifulsoup4
-          pyautogui
-          googletrans
-          flask
-          flask-socketio
-          flask-session
-          flask-sqlalchemy
-        ]))
-    ];
   };
 
   home-manager = {
@@ -138,24 +96,5 @@
     };
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    speedtest-cli
-    wget
-    gcc
-    inxi
-    mc
-    #pkgs.fastfetch
-    wget
-    unzip
-  ];
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 }

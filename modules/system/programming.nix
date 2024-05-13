@@ -11,6 +11,7 @@ in {
       enable = lib.mkEnableOption "enable programming programs";
       game-development.enable = lib.mkEnableOption "enable game-development";
       virtualization.enable = lib.mkEnableOption "enable virtualization";
+      basic-languages.enable = lib.mkEnableOption "enable basic-languages";
     };
   };
   config = lib.mkIf cfg.enable {
@@ -28,8 +29,7 @@ in {
             pyautogui
           ]))
       ]
-      ++ lib.optionals cfg.game-development.enable
-      [
+      ++ lib.optionals cfg.game-development.enable [
         godot_4
         gimp
       ]
@@ -39,6 +39,13 @@ in {
         quickemu # automatically fetch ISOs and generate VMs
         anbox # android emulation
         winePackages.stableFull # wine is not an emulator
+      ]
+      ++ lib.optionals cfg.basic-languages [
+        gcc
+        rustc
+        jdk
+        peotry
+        jupyter
       ];
   };
 }
