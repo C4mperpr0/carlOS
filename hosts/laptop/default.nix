@@ -12,7 +12,7 @@
     ./hardware-configuration.nix
   ];
 
-  nixosModules = {
+  config.nixosModules = {
     office = {
       enable = true;
       latex.enable = true;
