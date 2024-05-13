@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
-  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -12,7 +10,7 @@
     ./hardware-configuration.nix
   ];
 
-  config.nixosModules = {
+  nixosModules = {
     office = {
       enable = true;
       latex.enable = true;
@@ -20,7 +18,7 @@
     };
     programming = {
       enable = true;
-      game-developement.enable = true;
+      game-development.enable = true;
       virtualization.enable = true;
       basic-languages.enable = true;
     };

@@ -7,7 +7,7 @@
   cfg = config.nixosModules.programming;
 in {
   options = {
-    nixosModules.office = {
+    nixosModules.programming = {
       enable = lib.mkEnableOption "enable programming programs";
       game-development.enable = lib.mkEnableOption "enable game-development";
       virtualization.enable = lib.mkEnableOption "enable virtualization";
