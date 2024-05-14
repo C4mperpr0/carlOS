@@ -15,7 +15,7 @@ in {
     users.users.carl.packages = with pkgs; [
       steam
       discord
-      supertuxkart
+      superTuxKart
       nxengine-evo
     ];
   };

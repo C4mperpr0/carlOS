@@ -13,7 +13,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     users.users.carl.packages = with pkgs; [
-      systmdgenie
+      systemdgenie
       gparted
       qdirstat
     ];

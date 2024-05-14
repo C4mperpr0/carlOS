@@ -40,11 +40,11 @@ in {
         anbox # android emulation
         winePackages.stableFull # wine is not an emulator
       ]
-      ++ lib.optionals cfg.basic-languages [
+      ++ lib.optionals cfg.basic-languages.enable [
         gcc
         rustc
         jdk
-        peotry
+        poetry
         jupyter
       ];
   };

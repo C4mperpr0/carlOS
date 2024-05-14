@@ -22,10 +22,10 @@
       virtualization.enable = true;
       basic-languages.enable = true;
     };
-    #gaming.enable = true;
-    #social.enable = true;
-    #cli-packages.enable = true;
-    #ui-utils.enable = true;
+    gaming.enable = true;
+    social.enable = true;
+    cli-packages.enable = true;
+    ui-utils.enable = true;
   };
 
   # Bootloader.

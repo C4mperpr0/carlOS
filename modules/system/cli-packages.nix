@@ -23,6 +23,7 @@ in {
       zoxide # cd replacement
       speedtest-cli
       unzip
+      git
       wget
       curl
       spotify-tui
