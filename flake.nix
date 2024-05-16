@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "The official Carl Operation System! Yes, the one Carl is using!";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";

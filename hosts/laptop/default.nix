@@ -9,8 +9,8 @@
 
   nixosModules = {
     desktop-environment = {
-      enable = true;
       kde.enable = true;
+      hyprland.enable = true;
     };
     office = {
       enable = true;

@@ -36,6 +36,7 @@ in {
       git
       pkgs-unstable.nh # yet another nix helper
       nano
+      pkgs-unstable.nix-inspect
     ];
   };
 }
