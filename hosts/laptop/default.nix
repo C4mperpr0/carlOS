@@ -1,16 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
   nixosModules = {
+    desktop-environment = {
+      enable = true;
+      kde.enable = true;
+    };
     office = {
       enable = true;
       latex.enable = true;
@@ -39,40 +40,12 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.firewall = {
-    enable = true;
-    allowedTCPPortRanges = [
-      {
-        from = 2757;
-        to = 2759;
-      } # SuperTuxKart
-    ];
-    allowedUDPPortRanges = [
-      {
-        from = 2757;
-        to = 2759;
-      } # SuperTuxKart
-    ];
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  # Make steam work
-  hardware.opengl.driSupport32Bit = true;
 
   # make Wa do the Com
   services.xserver.wacom.enable = true;

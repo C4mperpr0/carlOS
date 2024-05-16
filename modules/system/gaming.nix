@@ -12,11 +12,32 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    # Make steam work
+    hardware.opengl.driSupport32Bit = true;
+
     users.users.carl.packages = with pkgs; [
       steam
       discord
       superTuxKart
       nxengine-evo
     ];
+
+    # Enable networking
+    networking.networkmanager.enable = true;
+    networking.firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        {
+          from = 2757;
+          to = 2759;
+        } # SuperTuxKart
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 2757;
+          to = 2759;
+        } # SuperTuxKart
+      ];
+    };
   };
 }
