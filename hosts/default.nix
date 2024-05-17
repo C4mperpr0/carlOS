@@ -19,4 +19,13 @@ in {
       ../modules/system
     ];
   };
+  pc = lib.nixosSystem {
+    inherit system;
+    specialArgs = {inherit inputs pkgs pkgs-unstable;};
+    modules = [
+      ./pc
+      inputs.home-manager.nixosModules.home-manager
+      ../modules/system
+    ];
+  };
 }
