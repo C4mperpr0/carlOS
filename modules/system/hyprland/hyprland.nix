@@ -16,14 +16,17 @@ in {
   config = lib.mkIf cfg.enable {
     services.xserver.enable = true;
     programs.hyprland.enable = true;
-    programs.waybar = {
-      enable = true;
-      settings = import ./hyprland/waybarsettings.nix;
-    };
-    xdg.configFile = {
-      "hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
-    };
+
     home-manager.users.carl = {
+      xdg.configFile = {
+        "hypr/hyprland.conf".source = ./hyprland.conf;
+      };
+      programs = {
+        waybar = {
+          enable = true;
+          settings = import ./waybarsettings.nix;
+        };
+      };
       home.packages = with pkgs; [
         libsForQt5.qt5.qtwayland
         brightnessctl

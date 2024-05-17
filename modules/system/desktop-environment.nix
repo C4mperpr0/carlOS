@@ -5,7 +5,7 @@
 }: let
   cfg = config.nixosModules.desktop-environment;
 in {
-  #imports = [ ./hyprland/hyprland.nix ];
+  imports = [ ./hyprland/hyprland.nix ];
 
   options = {
     nixosModules.desktop-environment = {
@@ -26,7 +26,7 @@ in {
       })
     (lib.mkIf cfg.hyprland.enable
       {
-        #nixosModules.hyprland.enable = true;
+        nixosModules.hyprland.enable = true;
       })
   ];
 }
