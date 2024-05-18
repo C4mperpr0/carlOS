@@ -13,10 +13,13 @@ in {
   };
   config = lib.mkIf cfg.enable {
     # Make steam work
-    hardware.opengl.driSupport32Bit = true;
-
+    hardware.opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
+    programs.steam.enable = true;
     users.users.carl.packages = with pkgs; [
-      steam
+      #steam
       discord
       superTuxKart
       nxengine-evo

@@ -15,7 +15,14 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    programs.kdeconnect.enable = true;
+    programs = {
+      kdeconnect.enable = true;
+      droidcam.enable = true;
+    };
+    boot = {
+      kernelModules = ["v4l2loopback"]; # for droidcam
+      extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+    };
     environment.systemPackages = with pkgs;
       [
         firefox
@@ -27,6 +34,8 @@ in {
         bitwarden
         wacomtablet
         speedcrunch
+        linuxKernel.packages.linux_6_1.v4l2loopback
+        android-tools
       ]
       ++ lib.optionals cfg.latex.enable
       [
