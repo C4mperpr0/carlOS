@@ -42,6 +42,7 @@ in {
       ]
       ++ lib.optionals cfg.basic-languages.enable [
         gcc
+        gnumake
         rustc
         jdk
         poetry
