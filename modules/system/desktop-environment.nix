@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.nixosModules.desktop-environment;
-in {
+  in {
   imports = [ ./hyprland/hyprland.nix ];
 
   options = {

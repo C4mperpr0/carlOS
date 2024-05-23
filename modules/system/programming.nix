@@ -18,6 +18,7 @@ in {
     environment.systemPackages = with pkgs;
       [
         vscodium
+        xorg.xev # for detecting keycodes
         (python3.withPackages (ps:
           with ps; [
             requests
