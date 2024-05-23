@@ -29,6 +29,8 @@
     ui-utils.enable = true;
   };
 
+  virtualisation.docker.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -54,7 +56,7 @@
   users.users.carl = {
     isNormalUser = true;
     description = "Carl";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
   home-manager = {

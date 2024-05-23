@@ -44,6 +44,10 @@ in {
       ++ lib.optionals cfg.basic-languages.enable [
         gcc
         gnumake
+
+        docker
+        vscode
+        
         rustc
         jdk
         poetry
