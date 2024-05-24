@@ -2,6 +2,7 @@
   lib,
   pkgs,
   pkgs-unstable,
+  inputs,
   config,
   ...
 }: let
@@ -18,7 +19,25 @@ in {
     programs = {
       kdeconnect.enable = true;
       droidcam.enable = true;
+      #firefox = {          enable = true;          profiles.default = {              extensions = with inputs.firefox-addons.packages."x86_64-linux"; [                bitwarden                ublock-origin                sponsorblock                darkreader                youtube-shorts-block                tridactyl              ];            };        };
     };
+
+    home-manager.users.carl = {
+      programs.firefox = {
+        enable = true;
+        profiles.default = {
+          extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+            bitwarden
+            ublock-origin
+            sponsorblock
+            darkreader
+            youtube-shorts-block
+            #tridactyl
+          ];
+        };
+      };
+    };
+
     boot = {
       kernelModules = ["v4l2loopback"]; # for droidcam
       extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
