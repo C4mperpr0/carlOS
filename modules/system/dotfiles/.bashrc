@@ -5,4 +5,5 @@ alias gitsync="git pull && git add * && git commit -m \"sync\" && git push"
 
 
 # zoxide
+alias cd="z"
 eval "$(zoxide init bash)"
