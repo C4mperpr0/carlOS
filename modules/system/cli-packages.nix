@@ -38,5 +38,8 @@ in {
       nano
       pkgs-unstable.nix-inspect
     ];
+    home-manager.users.carl.xdg = {
+      configFile."/home/carl/.bashrc".source = ./dotfiles/.bashrc;
+    };
   };
 }
