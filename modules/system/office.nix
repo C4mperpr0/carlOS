@@ -58,6 +58,7 @@ in {
             sponsorblock
             darkreader
             youtube-shorts-block
+            dictionary-german-2.1
             #tridactyl
           ];
         };
