@@ -30,6 +30,7 @@ in {
       gitui
       lolcat
       lf # cli file manager
+      nixos-generators # for generating ISOs
     ];
     fonts.packages = with pkgs; [nerdfonts];
     environment.systemPackages = with pkgs; [
