@@ -1,5 +1,6 @@
 {
   pkgs,
+  flake-confs,
   lib,
   config,
   ...
@@ -12,7 +13,7 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    users.users.carl.packages = with pkgs; [
+    users.users.${flake-confs.user.name}.packages = with pkgs; [
       systemdgenie
       gparted
       qdirstat

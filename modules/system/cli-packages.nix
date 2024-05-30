@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  flake-confs,
   config,
   lib,
   ...
@@ -13,7 +14,7 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    users.users.carl.packages = with pkgs; [
+    users.users.${flake-confs.user.name}.packages = with pkgs; [
       cowsay # holy cow
       nix-search-cli
       asciiquarium
@@ -39,8 +40,8 @@ in {
       nano
       pkgs-unstable.nix-inspect
     ];
-    home-manager.users.carl.xdg = {
-      configFile."/home/carl/.bashrc".source = ./dotfiles/.bashrc;
+    home-manager.users.${flake-confs.user.name}.xdg = {
+      configFile."/home/${flake-confs.user.name}/.bashrc".source = ./dotfiles/.bashrc;
     };
   };
 }

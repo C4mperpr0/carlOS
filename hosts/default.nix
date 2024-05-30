@@ -1,5 +1,8 @@
-{inputs}: let
-  system = "x86_64-linux";
+{
+  inputs,
+  flake-confs,
+}: let
+  system = flake-confs.system;
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -12,7 +15,7 @@
 in {
   laptop = lib.nixosSystem {
     inherit system;
-    specialArgs = {inherit inputs pkgs pkgs-unstable;};
+    specialArgs = {inherit inputs flake-confs pkgs pkgs-unstable;};
     modules = [
       ./laptop
       inputs.home-manager.nixosModules.home-manager
@@ -21,7 +24,7 @@ in {
   };
   pc = lib.nixosSystem {
     inherit system;
-    specialArgs = {inherit inputs pkgs pkgs-unstable;};
+    specialArgs = {inherit inputs flake-confs pkgs pkgs-unstable;};
     modules = [
       ./pc
       inputs.home-manager.nixosModules.home-manager

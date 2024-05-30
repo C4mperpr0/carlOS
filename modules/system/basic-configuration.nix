@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, flake-confs,...}: {
   # Enable Flakes
   nix = {
     settings = {

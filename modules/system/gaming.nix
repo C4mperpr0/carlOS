@@ -1,5 +1,6 @@
 {
   pkgs,
+  flake-confs,
   lib,
   config,
   ...
@@ -18,7 +19,7 @@ in {
       driSupport32Bit = true;
     };
     programs.steam.enable = true;
-    users.users.carl.packages = with pkgs; [
+    users.users.${flake-confs.user.name}.packages = with pkgs; [
       #steam
       discord
       superTuxKart

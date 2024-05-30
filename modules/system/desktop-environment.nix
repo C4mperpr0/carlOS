@@ -1,5 +1,6 @@
 {
   lib,
+  flake-confs,
   config,
   ...
 }: let
@@ -9,7 +10,6 @@
 
   options = {
     nixosModules.desktop-environment = {
-      #enable = lib.mkEnableOption "enable desktop-environment programs";
       kde.enable = lib.mkEnableOption "enable kde";
       hyprland.enable = lib.mkEnableOption "enable hyprland";
     };

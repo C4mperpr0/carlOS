@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./basic-configuration.nix
+
     ./office.nix
     ./social.nix
     ./cli-packages.nix

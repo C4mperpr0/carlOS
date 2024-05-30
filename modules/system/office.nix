@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  flake-confs,
   pkgs-unstable,
   inputs,
   config,
@@ -19,10 +20,9 @@ in {
     programs = {
       kdeconnect.enable = true;
       droidcam.enable = true;
-      #firefox = {          enable = true;          profiles.default = {              extensions = with inputs.firefox-addons.packages."x86_64-linux"; [                bitwarden                ublock-origin                sponsorblock                darkreader                youtube-shorts-block                tridactyl              ];            };        };
     };
 
-    home-manager.users.carl = {
+    home-manager.users.${flake-confs.user.name} = {
       programs.firefox = {
         enable = true;
         profiles.default = {
@@ -52,7 +52,7 @@ in {
             };
             search.force = true;
           };
-          extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+          extensions = with inputs.firefox-addons.packages."${flake-confs.system}"; [
             bitwarden
             ublock-origin
             sponsorblock

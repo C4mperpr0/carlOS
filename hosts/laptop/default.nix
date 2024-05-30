@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, ...}: {
+{
+  pkgs,
+  flake-confs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -36,7 +40,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = flake-confs.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -54,16 +58,16 @@
   services.xserver.wacom.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.carl = {
+  users.users.${flake-confs.user.name} = {
     isNormalUser = true;
-    description = "Carl";
+    description = "${flake-confs.user.description}";
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
   home-manager = {
     extraSpecialArgs = {unstable = pkgs;};
     useGlobalPkgs = true;
-    users.carl = {pkgs, ...}: {
+    users.${flake-confs.user.name} = {pkgs, ...}: {
       imports = [../../modules/nvim/neovim.nix];
       home-modules.nvim.enable = true;
       home.stateVersion = "23.11";

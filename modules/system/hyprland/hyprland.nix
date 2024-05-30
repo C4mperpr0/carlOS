@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  flake-confs,
   pkgs,
   ...
 }: let
@@ -16,7 +17,7 @@ in {
     services.xserver.enable = true;
     programs.hyprland.enable = true;
 
-    home-manager.users.carl = {
+    home-manager.users."${flake-confs.user.name}" = {
       xdg.configFile = {
         "hypr/hyprland.conf".source = ./hyprland.conf;
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};

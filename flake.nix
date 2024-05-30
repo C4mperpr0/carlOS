@@ -13,14 +13,7 @@
   };
 
   outputs = inputs @ {self, ...}: let
-    flake-confs = {
-      user = {
-        name = "carl";
-        description = "Carl";
-      };
-      hostname = "nixos";
-      system = "x86_64-linux";
-    };
+    flake-confs = import ./flake-confs.nix;
   in {
     nixosConfigurations = import ./hosts {
       inherit inputs flake-confs;
