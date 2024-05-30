@@ -7,7 +7,7 @@
   cfg = config.nixosModules.minegrub;
 in {
   options = {
-    nixosModules.minegub = {
+    nixosModules.minegrub = {
       enable = lib.mkEnableOption "enable programming minegrub";
     };
   };
