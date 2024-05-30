@@ -9,6 +9,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs = inputs @ {self, ...}: {
