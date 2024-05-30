@@ -12,9 +12,18 @@
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
-  outputs = inputs @ {self, ...}: {
+  outputs = inputs @ {self, ...}: let
+    flake-confs = {
+      user = {
+        name = "carl";
+        description = "Carl";
+      };
+      hostname = "nixos";
+      system = "x86_64-linux";
+    };
+  in {
     nixosConfigurations = import ./hosts {
-      inherit inputs;
+      inherit inputs flake-confs;
     };
   };
 }
