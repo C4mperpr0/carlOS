@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./basic-configuration.nix
-    ./minegrub.nix  
+    #./minegrub.nix  
     ./office.nix
     ./social.nix
     ./cli-packages.nix
