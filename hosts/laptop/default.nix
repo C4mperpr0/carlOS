@@ -12,7 +12,7 @@
   ];
 
   nixosModules = {
-    minegrub.enable = true;
+    #minegrub.enable = true;
     desktop-environment = {
       kde.enable = true;
       hyprland.enable = true;
