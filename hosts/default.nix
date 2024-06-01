@@ -15,7 +15,10 @@
 in {
   laptop = lib.nixosSystem {
     inherit system;
-    specialArgs = {inherit inputs flake-confs pkgs pkgs-unstable;};
+    specialArgs = {
+      inherit inputs flake-confs pkgs pkgs-unstable;
+      buildName = "laptop";
+    };
     modules = [
       ./laptop
       inputs.home-manager.nixosModules.home-manager
@@ -24,7 +27,10 @@ in {
   };
   pc = lib.nixosSystem {
     inherit system;
-    specialArgs = {inherit inputs flake-confs pkgs pkgs-unstable;};
+    specialArgs = {
+      inherit inputs flake-confs pkgs pkgs-unstable;
+      buildName = "pc";
+    };
     modules = [
       ./pc
       inputs.home-manager.nixosModules.home-manager

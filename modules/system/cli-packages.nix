@@ -4,6 +4,7 @@
   flake-confs,
   config,
   lib,
+  buildName,
   ...
 }: let
   cfg = config.nixosModules.cli-packages;
@@ -41,7 +42,7 @@ in {
       pkgs-unstable.nix-inspect
     ];
     home-manager.users.${flake-confs.user.name}.xdg = {
-      configFile."/home/${flake-confs.user.name}/.bashrc".source = ./dotfiles/.bashrc;
+      configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix buildName flake-confs.user.name;
     };
   };
 }
