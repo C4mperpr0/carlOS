@@ -17,7 +17,7 @@ buildName: userName:
       c() { z "$1" && ls -A; }
       fucking() { sudo $(fc -ln -1); }
       alias gitsync="git pull && git add * && git commit -m \"sync\" && git push"
-      #quitgame() { local streak_file="$HOME/test"; (( RANDOM % 10 == 0 )) && echo "0" > "$streak_file" && echo "You've lost!" && systemctl suspend || { [ ! -f "$streak_file" ] && echo "1" > "$streak_file" || { streak=$(<"$streak_file"); ((streak++)); echo "$streak" > "$streak_file"; }; echo "You got lucky! Your streak is $streak"; }; }
+      quitgame() { local streak_file="$HOME/test"; (( RANDOM % 10 == 0 )) && echo "0" > "$streak_file" && echo "You've lost!" && systemctl suspend || { [ ! -f "$streak_file" ] && echo "1" > "$streak_file" || { streak=$(<"$streak_file"); ((streak++)); echo "$streak" > "$streak_file"; }; echo "You got lucky! Your streak is $streak"; }; }
       alias fixvscode="rm -rf ~/.config/VSCodium/GPUCache"
       javarun() { javac "$1" && java "$(basename "$1" .java)" && rm *.class; }
 
