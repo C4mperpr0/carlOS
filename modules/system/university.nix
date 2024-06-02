@@ -23,6 +23,7 @@ in {
       jdk
       poetry
       jupyter
+      qgis
     ];
   };
 }
