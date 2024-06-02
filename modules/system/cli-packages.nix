@@ -17,6 +17,7 @@ in {
   config = lib.mkIf cfg.enable {
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       cowsay # holy cow
+      sl
       nix-search-cli
       asciiquarium
       hyfetch # gay fastfetch frontend
