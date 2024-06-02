@@ -2,7 +2,7 @@
   imports = [
     ./basic-configuration.nix
     ./university.nix
-    #./minegrub.nix  
+    ./minegrub.nix  
     ./office.nix
     ./social.nix
     ./cli-packages.nix
