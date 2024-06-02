@@ -12,6 +12,11 @@
     config.allowUnfree = true;
   };
   lib = inputs.nixpkgs.lib;
+  commonModules = [
+      inputs.home-manager.nixosModules.home-manager
+      ../modules/system
+      inputs.minegrub-theme.nixosModules.default
+  ];
 in {
   laptop = lib.nixosSystem {
     inherit system;
@@ -19,10 +24,8 @@ in {
       inherit inputs flake-confs pkgs pkgs-unstable;
       buildName = "laptop";
     };
-    modules = [
+    modules = commonModules ++ [
       ./laptop
-      inputs.home-manager.nixosModules.home-manager
-      ../modules/system
     ];
   };
   pc = lib.nixosSystem {
@@ -31,10 +34,8 @@ in {
       inherit inputs flake-confs pkgs pkgs-unstable;
       buildName = "pc";
     };
-    modules = [
+    modules = commonModules ++ [
       ./pc
-      inputs.home-manager.nixosModules.home-manager
-      ../modules/system
     ];
   };
 }
