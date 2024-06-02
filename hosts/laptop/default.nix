@@ -13,6 +13,7 @@
 
   nixosModules = {
     #minegrub.enable = true;
+    university.enable = true;
     desktop-environment = {
       kde.enable = true;
       hyprland.enable = true;
@@ -33,8 +34,6 @@
     cli-packages.enable = true;
     ui-utils.enable = true;
   };
-
-  virtualisation.docker.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -61,7 +60,7 @@
   users.users.${flake-confs.user.name} = {
     isNormalUser = true;
     description = "${flake-confs.user.description}";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   home-manager = {

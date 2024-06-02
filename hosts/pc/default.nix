@@ -8,7 +8,8 @@
   ];
 
   nixosModules = {
-    #minegrub = true;
+    #minegrub.enable = true;
+    university.enable = true;
     desktop-environment = {
       kde.enable = true;
       #hyprland.enable = true;
