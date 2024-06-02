@@ -29,7 +29,6 @@ in {
       git
       wget
       curl
-      spotify-tui
       gitui
       lolcat
       lf # cli file manager
