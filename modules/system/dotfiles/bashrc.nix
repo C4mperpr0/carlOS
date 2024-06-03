@@ -23,4 +23,6 @@ buildName: userName:
 
       # zoxide
       eval "$(zoxide init bash)"
+      # thefuck
+      eval "$(thefuck --alias fuck)"
 ''

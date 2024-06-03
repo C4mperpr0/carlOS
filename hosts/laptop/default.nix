@@ -64,6 +64,7 @@
   };
 
   home-manager = {
+    backupFileExtension = "bak";
     extraSpecialArgs = {unstable = pkgs;};
     useGlobalPkgs = true;
     users.${flake-confs.user.name} = {pkgs, ...}: {

@@ -24,6 +24,7 @@ in {
       fastfetch # better neofetch (backend for hyfetch)
       btop # better htop
       zoxide # cd replacement
+      thefuck # cmd auto correct
       speedtest-cli
       unzip
       git
