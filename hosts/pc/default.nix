@@ -54,13 +54,13 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${flake-confs.user.name}= {
-    backupFileExtension = "bak";
     isNormalUser = true;
     description = "${flake-confs.user.description}";
     extraGroups = ["networkmanager" "wheel"];
   };
 
   home-manager = {
+    backupFileExtension = "bak";
     extraSpecialArgs = {unstable = pkgs;};
     useGlobalPkgs = true;
     users.${flake-confs.user.name}= {pkgs, ...}: {
