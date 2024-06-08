@@ -13,7 +13,6 @@ in {
     nixosModules.office = {
       enable = lib.mkEnableOption "enable office programs";
       latex.enable = lib.mkEnableOption "enable latex";
-      media.enable = lib.mkEnableOption "enable media";
     };
   };
   config = lib.mkIf cfg.enable {
@@ -94,15 +93,6 @@ in {
         texliveFull
         jabref
         texstudio
-      ]
-      ++ lib.optionals cfg.media.enable
-      [
-        ffmpeg-full
-        spotify
-        vlc
-        blender
-        freecad
-        gimp
       ];
   };
 }

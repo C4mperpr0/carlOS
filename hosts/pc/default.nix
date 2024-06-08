@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, flake-confs, ...}: {
+{
+  pkgs,
+  flake-confs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -17,7 +21,11 @@
     office = {
       enable = true;
       latex.enable = true;
-      media.enable = true;
+    };
+    media = {
+      enable = true;
+      modeling.enable = true;
+      videoEditing.enable = true;
     };
     programming = {
       enable = true;
@@ -53,7 +61,7 @@
   services.xserver.wacom.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${flake-confs.user.name}= {
+  users.users.${flake-confs.user.name} = {
     isNormalUser = true;
     description = "${flake-confs.user.description}";
     extraGroups = ["networkmanager" "wheel"];
@@ -63,27 +71,27 @@
     backupFileExtension = "bak";
     extraSpecialArgs = {unstable = pkgs;};
     useGlobalPkgs = true;
-    users.${flake-confs.user.name}= {pkgs, ...}: {
+    users.${flake-confs.user.name} = {pkgs, ...}: {
       imports = [../../modules/nvim/neovim.nix];
       home-modules.nvim.enable = true;
       home.stateVersion = "23.11";
     };
   };
 
-#  nixpkgs = {
-#    overlays = let
-#     #obsidiansettingssync-overlay = final: prev: {
-#     # obsidiansettingssync = prev.callPackage /home/carl/Documents/git/obsidian_settings_sync#/#packaging/derivation.nix {};
-#    #};
-#    astah-overlay = final: prev: {
-#      astah = prev.callPackage /home/carl/Documents/install-astah/astah.nix {};
-#    };
-#     #in [ obsidiansettingssync-overlay astah-overlay ];
-#     in [ astah-overlay ];
-#  };
-#  environment.systemPackages = with pkgs; [
-#    astah
-#  ];
+  #  nixpkgs = {
+  #    overlays = let
+  #     #obsidiansettingssync-overlay = final: prev: {
+  #     # obsidiansettingssync = prev.callPackage /home/carl/Documents/git/obsidian_settings_sync#/#packaging/derivation.nix {};
+  #    #};
+  #    astah-overlay = final: prev: {
+  #      astah = prev.callPackage /home/carl/Documents/install-astah/astah.nix {};
+  #    };
+  #     #in [ obsidiansettingssync-overlay astah-overlay ];
+  #     in [ astah-overlay ];
+  #  };
+  #  environment.systemPackages = with pkgs; [
+  #    astah
+  #  ];
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

@@ -21,7 +21,10 @@
     office = {
       enable = true;
       latex.enable = true;
-      media.enable = true;
+    };
+    media = {
+      enable = true;
+      modeling.enable = true;
     };
     programming = {
       enable = true;

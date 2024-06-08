@@ -4,6 +4,7 @@
     ./university.nix
     ./minegrub.nix  
     ./office.nix
+    ./media.nix
     ./social.nix
     ./cli-packages.nix
     ./gaming.nix
