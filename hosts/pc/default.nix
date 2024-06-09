@@ -22,6 +22,7 @@
       enable = true;
       latex.enable = true;
     };
+    firefox-setup.enable = true;
     media = {
       enable = true;
       modeling.enable = true;
