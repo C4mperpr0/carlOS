@@ -5,8 +5,8 @@
   ...
 }: let
   cfg = config.nixosModules.desktop-environment;
-  in {
-  imports = [ ./hyprland/hyprland.nix ];
+in {
+  imports = [./hyprland/hyprland.nix];
 
   options = {
     nixosModules.desktop-environment = {
@@ -18,10 +18,10 @@
   config = lib.mkMerge [
     (lib.mkIf cfg.kde.enable
       {
-        services.xserver = {
-          enable = true;
+        services = {
+          xserver.enable = true;
           displayManager.sddm.enable = true;
-          desktopManager.plasma5.enable = true;
+          xserver.desktopManager.plasma5.enable = true;
         };
       })
     (lib.mkIf cfg.hyprland.enable

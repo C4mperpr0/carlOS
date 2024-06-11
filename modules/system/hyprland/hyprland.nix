@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   flake-confs,
@@ -22,10 +23,20 @@ in {
         "hypr/hyprland.conf".source = ./hyprland.conf;
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
       };
+      imports = [inputs.ags.homeManagerModules.default];
       programs = {
-        waybar = {
+        #waybar = {
+        #  enable = true;
+        #  settings = import ./waybarsettings.nix;
+        #};
+        ags = {
           enable = true;
-          settings = import ./waybarsettings.nix;
+          # configDir = ./ags;
+          #extraPackages = with pkgs; [
+          # gtksourceview
+          #webkitgtk
+          #accountsservice
+          #];
         };
       };
       home.packages = with pkgs; [

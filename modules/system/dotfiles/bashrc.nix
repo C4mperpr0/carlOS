@@ -6,7 +6,7 @@ buildName: userName:
       # nix commands (make it not depend on host!)
       alias nichts="nh os switch /home/${userName}/Documents/git/carlOS/ -H ${buildName}"
       alias garnichts="nh os switch /home/${userName}/Documents/git/carlOS/ --update -H ${buildName}"
-      alias tracenichts="nixos-rebuild switch --show-trace" #"--flake /home/${userName}/Documents/git/carlOS/.#${buildName} --show-trace"
+      alias tracenichts="sudo nixos-rebuild switch --flake /home/${userName}/Documents/git/carlOS/.#${buildName} --show-trace"
 
       # program aliases
       alias cd="z"

@@ -28,7 +28,8 @@ in {
     environment.systemPackages = with pkgs;
       [
         firefox
-        pkgs-unstable.obsidian
+        #pkgs-unstable.obsidian
+        obsidian
         kate
         okular
         thunderbird
