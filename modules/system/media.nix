@@ -23,6 +23,7 @@ in {
         okular
         ffmpeg-full
         spotify
+        #spicetify-cli
         gimp
       ]
       ++ lib.optionals cfg.modeling.enable
@@ -34,5 +35,12 @@ in {
       [
         davinci-resolve-studio
       ];
+#    home-manager.users.${flake-confs.userName}.lib.homeManagerConfigurations = {
+#      inherit pkgs;
+#      extraSpeicialArgs = {spicetify = inputs.spicetify-nix;};
+#      modules = [
+#        ./spicetify.nix
+#      ];
+#    };
   };
 }
