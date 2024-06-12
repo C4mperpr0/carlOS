@@ -18,6 +18,10 @@ in {
     services.xserver.enable = true;
     programs.hyprland.enable = true;
 
+    users.users.${flake-confs.user.name}.packages = with pkgs; [
+      networkmanagerapplet
+    ];
+
     home-manager.users."${flake-confs.user.name}" = {
       xdg.configFile = {
         "hypr/hyprland.conf".source = ./hyprland.conf;
