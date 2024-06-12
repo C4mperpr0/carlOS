@@ -29,6 +29,7 @@ in {
             pynput
             beautifulsoup4
             pyautogui
+            gtts
           ]))
       ]
       ++ lib.optionals cfg.game-development.enable [
