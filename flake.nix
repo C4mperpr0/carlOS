@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager.url = "github:nix-community/home-manager?ref=release-24.05";
     ags.url = "github:Aylur/ags"; # Aylur's GTK Shell 
+    spicetify-nix.url = "github:the-argus/spicetify-nix"; # spicetify-cli via a flake
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
