@@ -24,6 +24,7 @@ in {
         ffmpeg-full
         spotify
         #spicetify-cli
+        qpwgraph
         gimp
       ]
       ++ lib.optionals cfg.modeling.enable

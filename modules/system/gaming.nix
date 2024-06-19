@@ -21,7 +21,7 @@ in {
     programs.steam.enable = true;
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       #steam
-      discord
+      vesktop
       superTuxKart
       nxengine-evo
     ];
