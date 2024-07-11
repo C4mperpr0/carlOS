@@ -7,44 +7,37 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.office;
+  cfg = config.nixosModules.stylix;
 in {
   options = {
-    nixosModules.office = {
-      enable = lib.mkEnableOption "enable office programs";
-      latex.enable = lib.mkEnableOption "enable latex";
+    nixosModules.stylix = {
+      enable = lib.mkEnableOption "enable ricing with stylix";
+      #      latex.enable = lib.mkEnableOption "enable latex";
     };
   };
   config = lib.mkIf cfg.enable {
-    programs = {
-      kdeconnect.enable = true;
-      droidcam.enable = true;
-    };
+    stylix = {
+      enable = true;
+      #image = import ./hyprland/hyprpaper.nix {inherit lib;};
+      image = pkgs.fetchurl {
+        url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
+        sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+      };
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/unikitty-dark.yaml";
+      #colors.override = {
+      #};
+      cursor = {
+        package = pkgs.vimix-cursors;
+        name = "Vimix-cursors";
+      };
 
-    boot = {
-      kernelModules = ["v4l2loopback"]; # for droidcam
-      extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+      #targets = {
+      #  playmouth = {
+      #    enable = true;
+      #    logo = "";
+          #logoAnimated = true;
+      #  };
+      #};
     };
-    environment.systemPackages = with pkgs;
-      [
-        firefox
-        #pkgs-unstable.obsidian
-        obsidian
-        kate
-        okular
-        thunderbird
-        libreoffice
-        bitwarden
-        wacomtablet
-        speedcrunch
-        linuxKernel.packages.linux_6_1.v4l2loopback
-        android-tools
-      ]
-      ++ lib.optionals cfg.latex.enable
-      [
-        texliveFull
-        jabref
-        texstudio
-      ];
   };
 }

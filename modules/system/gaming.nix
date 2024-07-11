@@ -24,6 +24,7 @@ in {
       vesktop
       superTuxKart
       nxengine-evo
+      oneko # very important!
     ];
 
     # Enable networking

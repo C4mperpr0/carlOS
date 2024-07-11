@@ -4,6 +4,7 @@
 {
   pkgs,
   flake-confs,
+  inputs,
   ...
 }: {
   imports = [
@@ -33,6 +34,9 @@
       virtualization.enable = true;
       basic-languages.enable = true;
     };
+    #stylix = {
+    #  enable = true;
+    #};
     gaming.enable = true;
     social.enable = true;
     cli-packages.enable = true;

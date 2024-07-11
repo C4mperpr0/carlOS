@@ -30,6 +30,7 @@ in {
             beautifulsoup4
             pyautogui
             gtts
+            simple-term-menu
           ]))
       ]
       ++ lib.optionals cfg.game-development.enable [
