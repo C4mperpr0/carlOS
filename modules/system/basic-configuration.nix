@@ -8,7 +8,7 @@
     gc = {
       automatic = true;
       dates = "monthly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 21d";
     };
   };
 
