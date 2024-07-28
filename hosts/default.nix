@@ -15,7 +15,7 @@
   commonModules = [
       inputs.home-manager.nixosModules.home-manager
       ../modules/system
-      inputs.minegrub-theme.nixosModules.default
+      #inputs.minegrub-theme.nixosModules.default
       inputs.stylix.nixosModules.stylix
   ];
 in {
