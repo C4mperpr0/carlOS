@@ -20,6 +20,7 @@ in {
       [
         vscodium
         xorg.xev # for detecting keycodes
+        xdotool
         (python3.withPackages (ps:
           with ps; [
             requests
