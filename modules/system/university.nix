@@ -24,6 +24,8 @@ in {
       poetry
       jupyter
       #qgis
+      gradle
+      jetbrains.idea-ultimate
     ];
   };
 }

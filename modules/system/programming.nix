@@ -21,6 +21,7 @@ in {
         vscodium
         xorg.xev # for detecting keycodes
         xdotool
+        hoppscotch # debugging http requests
         (python3.withPackages (ps:
           with ps; [
             requests
