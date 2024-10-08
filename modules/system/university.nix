@@ -26,6 +26,7 @@ in {
       #qgis
       gradle
       jetbrains.idea-ultimate
+      dbeaver-bin
     ];
   };
 }

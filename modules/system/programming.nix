@@ -22,6 +22,7 @@ in {
         xorg.xev # for detecting keycodes
         xdotool
         hoppscotch # debugging http requests
+        arduino
         (python3.withPackages (ps:
           with ps; [
             requests

@@ -12,7 +12,6 @@ in {
   options = {
     nixosModules.stylix = {
       enable = lib.mkEnableOption "enable ricing with stylix";
-      #      latex.enable = lib.mkEnableOption "enable latex";
     };
   };
   config = lib.mkIf cfg.enable {
