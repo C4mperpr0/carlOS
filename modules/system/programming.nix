@@ -18,6 +18,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs;
       [
+        monocraft
         vscodium
         xorg.xev # for detecting keycodes
         xdotool
