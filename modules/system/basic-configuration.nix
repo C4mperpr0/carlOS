@@ -7,8 +7,8 @@
     };
     gc = {
       automatic = true;
-      dates = "monthly";
-      options = "--delete-older-than 21d";
+      dates = "weekly";
+      options = "--delete-older-than 14d";
     };
   };
 
