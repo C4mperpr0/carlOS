@@ -35,6 +35,7 @@ in {
       lf # cli file manager
       nixos-generators # for generating ISOs
       cpulimit # limit cpu usage for a certain process
+      tealdeer # compact man pages
     ];
     fonts.packages = with pkgs; [nerdfonts];
     environment.systemPackages = with pkgs; [

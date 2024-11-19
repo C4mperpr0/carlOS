@@ -35,6 +35,7 @@ in {
             pyautogui
             gtts
             simple-term-menu
+            psycopg2
           ]))
       ]
       ++ lib.optionals cfg.game-development.enable [

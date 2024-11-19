@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-unstable,
   flake-confs,
   config,
   ...
@@ -27,6 +28,10 @@ in {
       gradle
       jetbrains.idea-ultimate
       dbeaver-bin
+
+      # pokedex programmieren 2
+      pkgs-unstable.flutter327
+      android-tools
     ];
   };
 }
