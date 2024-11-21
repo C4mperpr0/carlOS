@@ -61,6 +61,18 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # enable open-cl to use davinci resolve
+  hardware.amdgpu.opencl.enable = true;
+  services.xserver.videoDrivers = ["amdpgu-pro"];
+  hardware.opengl = {
+      driSupport32Bit = true;
+      enable = true;
+      extraPackages = with pkgs; [
+        amdvlk
+        rocmPackages.clr.icd
+      ];
+    };
+
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

@@ -47,6 +47,7 @@ in {
         quickemu # automatically fetch ISOs and generate VMs
         anbox # android emulation
         winePackages.stableFull # wine is not an emulator
+        winetricks
       ]
       ++ lib.optionals cfg.basic-languages.enable [
         gcc
