@@ -99,7 +99,8 @@ in {
         nil
         alejandra
         rust-analyzer
-        nodePackages_latest.pyright
+        #nodePackages_latest.pyright
+        vimPlugins.coc-pyright
         lua-language-server
         jdt-language-server
         lldb

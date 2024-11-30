@@ -1,6 +1,5 @@
 {
   lib,
-  flake-confs,
   config,
   ...
 }: let

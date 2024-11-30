@@ -37,7 +37,6 @@ in {
         davinci-resolve
         gpu-viewer
         vulkan-tools
-        opencl-info
         clinfo
         glxinfo
       ];
