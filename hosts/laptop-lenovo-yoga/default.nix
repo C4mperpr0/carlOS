@@ -3,8 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
+  pkgs-unstable,
   flake-confs,
-  inputs,
   ...
 }: {
   imports = [
@@ -49,7 +49,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # use latest kernel version (for newer hardware compatability)
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
 
   networking.hostName = flake-confs.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -58,20 +58,19 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # make AMD iGPU work
+  boot.initrd.kernelModules = ["amdgpu"];
+  services.xserver.videoDrivers = ["amdgpu"];
+  environment.systemPackages = with pkgs; [
+    clinfo
+  ];
+  hardware.graphics.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+  hardware.graphics.enable32Bit = true; # For 32 bit applications
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # enable open-cl to use davinci resolve
-  hardware.amdgpu.opencl.enable = true;
-  services.xserver.videoDrivers = ["amdpgu-pro"];
-  hardware.opengl = {
-      driSupport32Bit = true;
-      enable = true;
-      extraPackages = with pkgs; [
-        amdvlk
-        rocmPackages.clr.icd
-      ];
-    };
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;

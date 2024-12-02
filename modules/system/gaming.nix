@@ -13,18 +13,13 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    # Make steam work
-    #hardware.opengl = {
-    #  enable = true;
-    #  driSupport32Bit = true;
-    #};
     programs.steam.enable = true;
     users.users.${flake-confs.user.name}.packages = with pkgs; [
-      #steam
       vesktop
       superTuxKart
       nxengine-evo
-      oneko # very important!
+      oneko  # very important!
+      linuxwave  # music for racing game
     ];
 
     # Enable networking
@@ -35,13 +30,13 @@ in {
         {
           from = 2757;
           to = 2759;
-        } # SuperTuxKart
+        }  # SuperTuxKart
       ];
       allowedUDPPortRanges = [
         {
           from = 2757;
           to = 2759;
-        } # SuperTuxKart
+        }  # SuperTuxKart
       ];
     };
   };

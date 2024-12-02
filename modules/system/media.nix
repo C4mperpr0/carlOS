@@ -35,10 +35,6 @@ in {
       ++ lib.optionals cfg.videoEditing.enable
       [
         davinci-resolve
-        gpu-viewer
-        vulkan-tools
-        clinfo
-        glxinfo
       ];
 #    home-manager.users.${flake-confs.userName}.lib.homeManagerConfigurations = {
 #      inherit pkgs;
