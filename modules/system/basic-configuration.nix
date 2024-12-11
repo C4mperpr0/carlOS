@@ -8,7 +8,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
   };
 
@@ -47,4 +47,15 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
+  #argsOverride = rec {
+  #    src = pkgs.fetchurl {
+  #          url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+  #          sha256 = "qqgk6vB/YZEdIrdf8JCkA8PdC9c+I5M+C7qLWXFDbOE=";
+  #    };
+  #    version = "6.6.32";
+  #    modDirVersion = "6.6.32";
+  #    };
+  #});
 }

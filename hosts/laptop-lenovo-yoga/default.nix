@@ -27,7 +27,7 @@
     media = {
       enable = true;
       modeling.enable = true;
-      videoEditing.enable = true;
+      videoEditing.enable = false;
     };
     programming = {
       enable = true;
@@ -59,14 +59,16 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # make AMD iGPU work
-  boot.initrd.kernelModules = ["amdgpu"];
-  services.xserver.videoDrivers = ["amdgpu"];
+  #boot.initrd.kernelModules = ["amdgpu"];
+  #services.xserver.videoDrivers = ["amdgpu"];
+  boot.kernelParams = [ "amdgpu.runpm=1" ];
+  hardware.firmware = [ pkgs.linux-firmware ];
   environment.systemPackages = with pkgs; [
     clinfo
   ];
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
+  #hardware.graphics.extraPackages = with pkgs; [
+  #  rocmPackages.clr.icd
+  #];
   hardware.graphics.enable32Bit = true; # For 32 bit applications
 
   # Enable CUPS to print documents.
