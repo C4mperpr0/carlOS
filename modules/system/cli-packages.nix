@@ -36,6 +36,7 @@ in {
       nixos-generators # for generating ISOs
       cpulimit # limit cpu usage for a certain process
       tealdeer # compact man pages
+      comma  # comma tool for nix shell temp bin automation
     ];
     fonts.packages = with pkgs; [nerdfonts];
     environment.systemPackages = with pkgs; [

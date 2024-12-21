@@ -48,6 +48,8 @@
     pulse.enable = true;
   };
 
+  boot.supportedFilesystems = ["nfts"];
+
   #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
   #argsOverride = rec {
   #    src = pkgs.fetchurl {

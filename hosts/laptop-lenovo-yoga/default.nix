@@ -59,7 +59,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # make AMD iGPU work
-  #boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = ["amdgpu"];
   #services.xserver.videoDrivers = ["amdgpu"];
   boot.kernelParams = [ "amdgpu.runpm=1" ];
   hardware.firmware = [ pkgs.linux-firmware ];
