@@ -18,6 +18,7 @@
     desktop-environment = {
       kde.enable = true;
       hyprland.enable = true;
+      gnome.enable = false;
     };
     office = {
       enable = true;
@@ -49,7 +50,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # use latest kernel version (for newer hardware compatability)
-  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
 
   networking.hostName = flake-confs.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -74,7 +75,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 

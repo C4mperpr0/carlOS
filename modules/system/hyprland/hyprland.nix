@@ -45,7 +45,7 @@ in {
       };
       home.packages = with pkgs; [
         hyprpaper
-        libsForQt5.qt5.qtwayland
+        kdePackages.qtwayland
         brightnessctl
         libnotify
       ];
