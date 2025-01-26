@@ -28,7 +28,7 @@
     media = {
       enable = true;
       modeling.enable = true;
-      videoEditing.enable = false;
+      videoEditing.enable = true;
     };
     programming = {
       enable = true;
@@ -49,6 +49,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # repair hibernation
+  security.protectKernelImage = false;
+    
   # use latest kernel version (for newer hardware compatability)
   boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
 

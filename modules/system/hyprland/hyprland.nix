@@ -24,7 +24,7 @@ in {
 
     home-manager.users."${flake-confs.user.name}" = {
       xdg.configFile = {
-        "hypr/hyprland.conf".source = ./hyprland.conf;
+        "hypr/hyprland.conf" = {source = ./hyprland.conf; force = true;};
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
       };
       imports = [inputs.ags.homeManagerModules.default];
@@ -36,11 +36,11 @@ in {
         ags = {
           enable = true;
           configDir = ./ags;
-          extraPackages = with pkgs; [
-            gtksourceview
-            webkitgtk
-            accountsservice
-          ];
+          #extraPackages = with pkgs; [
+            #gtksourceview
+            #webkitgtk
+            #accountsservice
+          #];
         };
       };
       home.packages = with pkgs; [
@@ -48,6 +48,7 @@ in {
         kdePackages.qtwayland
         brightnessctl
         libnotify
+        tofi
       ];
     };
   };

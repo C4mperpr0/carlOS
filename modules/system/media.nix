@@ -26,6 +26,7 @@ in {
         #spicetify-cli
         qpwgraph
         gimp
+        imagemagick # for cmd image manipulation
       ]
       ++ lib.optionals cfg.modeling.enable
       [
