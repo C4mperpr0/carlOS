@@ -18,12 +18,13 @@ in {
     home-manager.users.${flake-confs.user.name} = {
       programs.firefox = {
         enable = true;
-        #languagePacks = ["en-US" "de" "eo"];
+        languagePacks = ["en-US" "de"];
         profiles.default = {
           settings = {
             "browser.startup.homepage" = "https://bellgardt.dev";
             "signon.rememberSignons" = false;
             "browser.download.panel.shown" = true;
+            "layout.css.devPixelsPerPx" = -1.0; # follow system DPI to work with hyprland
           };
           search = {
             engines = {
