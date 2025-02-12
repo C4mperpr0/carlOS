@@ -49,4 +49,7 @@
   };
 
   boot.supportedFilesystems = ["nfts"];
+
+  # naming in grub
+  system.nixos.tags = ["CarlOS"];
 }

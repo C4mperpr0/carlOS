@@ -36,7 +36,7 @@
     };
     tray = {
       # icon-size= 21;
-      spacing = 10;
+      spacing = 12;
     };
     clock = {
       timezone = "Europe/Berlin";
@@ -69,8 +69,8 @@
     battery = {
       states = {
         # good= 95;
-        warning = 30;
-        critical = 15;
+        warning = 20;
+        critical = 10;
       };
       format = "{capacity}% {icon}";
       format-charging = "{capacity}% ";

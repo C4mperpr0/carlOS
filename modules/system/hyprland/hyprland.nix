@@ -26,6 +26,8 @@ in {
     services.xserver.enable = true;
     programs.hyprland.enable = true;
 
+    nixosModules.stylix.enable = true;
+
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       networkmanagerapplet
     ];
@@ -48,36 +50,36 @@ in {
         };
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
         #"hypr/" = {
-        #  source = ./hyprlock;
+        # source = ./hyprlock;
         #  recursive = true;
         #};
       };
 
-      #imports = [inputs.ags.homeManagerModules.default];
+      imports = [inputs.ags.homeManagerModules.default];
       programs = {
         waybar = {
           enable = true;
           settings = import ./waybarsettings.nix;
         };
-        # ags = {
-        #   package = pkgs-unstable.ags;
-        #   enable = true;
-        #   configDir = ./ags;
-        #   extraPackages = with pkgs-unstable.astal; [
-        #     io
-        #     hyprland
-        #     mpris
-        #     battery
-        #     wireplumber
-        #     network
-        #tray
-        #inputs.ags.packages.${pkgs.system}.battery
-        #battery
-        #gtksourceview
-        #webkitgtk
-        #accountsservice
-        #    ];
-        # };
+        ags = {
+          #   package = pkgs-unstable.ags;
+          enable = true;
+          configDir = ./ags;
+          extraPackages = with pkgs-unstable.astal; [
+            io
+            hyprland
+            mpris
+            battery
+            wireplumber
+            network
+            #tray
+            #inputs.ags.packages.${pkgs.system}.battery
+            #battery
+            #gtksourceview
+            #webkitgtk
+            #accountsservice
+          ];
+        };
       };
       home.packages = with pkgs; [
         hyprpaper
@@ -85,6 +87,7 @@ in {
         brightnessctl
         libnotify
         tofi
+        pavucontrol # for controlling pulse audio graphically
       ];
     };
   };
