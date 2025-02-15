@@ -36,17 +36,33 @@ in {
       nixos-generators # for generating ISOs
       cpulimit # limit cpu usage for a certain process
       tealdeer # compact man pages
-      comma  # comma tool for nix shell temp bin automation
+      comma # comma tool for nix shell temp bin automation
+      nix-index # nix packages index for comma to search in
     ];
+
     fonts.packages = with pkgs; [nerdfonts];
+
     environment.systemPackages = with pkgs; [
       git
       pkgs-unstable.nh # yet another nix helper
       nano
       pkgs-unstable.nix-inspect
+      (python3.withPackages (ps: # xontribs for xonsh
+        with ps; [
+          numpy
+          #xontrib-zoxide
+        ]))
     ];
+
     home-manager.users.${flake-confs.user.name}.xdg = {
       configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix buildName flake-confs.user.name;
+    };
+
+    programs = {
+      xonsh = {
+        enable = true;
+        config = "";
+      };
     };
   };
 }

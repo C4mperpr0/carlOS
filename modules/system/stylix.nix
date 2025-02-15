@@ -30,7 +30,7 @@ in {
         base03 = "#996969"; # comments, invisibles, line highlighting
         base04 = "#4d0000"; # dark foregroud 8used for status bars)
         base05 = "#ff0000"; # default foreground, caret, delimiters, operators
-        base06 = "#300000"; # light foreground (rarely used)
+        base06 = "#aa3333"; # light foreground (rarely used)
         base07 = "#111111"; # light background (rarely used)
         base08 = "#f4023f"; # variables, XML tags, markup link text, markup lists, diff, del
         base09 = "#f4b002"; # integers, booleans, constants, XML attributes, markup link url

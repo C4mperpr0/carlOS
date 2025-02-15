@@ -45,7 +45,7 @@ in {
       #  modules = [../ags/home.nix];
       xdg.configFile = {
         "hypr/hyprland.conf" = {
-          source = ./hyprland.conf;
+          source = builtins.toFile "hyprland.conf" (import ./hyprland.conf.nix { inherit lib config; });
           force = true;
         };
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
