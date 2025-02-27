@@ -5,8 +5,6 @@
 }: let
   cfg = config.nixosModules.desktop-environment;
 in {
-  imports = [./hyprland/hyprland.nix];
-
   options = {
     nixosModules.desktop-environment = {
       kde.enable = lib.mkEnableOption "enable kde";

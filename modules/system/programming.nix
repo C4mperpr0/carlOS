@@ -20,7 +20,7 @@ in {
       [
         monocraft
         vscodium
-        xorg.xev # for detecting keycodes
+        wev # for detecting keycodes
         xdotool
         hoppscotch # debugging http requests
         arduino

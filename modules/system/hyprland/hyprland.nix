@@ -16,17 +16,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    security = {
-      pam.services.kwallet = {
-        name = "kwallet";
-        enableKwallet = true;
-      };
-    };
+    security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
     services.xserver.enable = true;
     programs.hyprland.enable = true;
 
     nixosModules.stylix.enable = true;
+    nixosModules.greetd.enable = false;
 
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       networkmanagerapplet
@@ -45,7 +41,7 @@ in {
       #  modules = [../ags/home.nix];
       xdg.configFile = {
         "hypr/hyprland.conf" = {
-          source = builtins.toFile "hyprland.conf" (import ./hyprland.conf.nix { inherit lib config; });
+          source = builtins.toFile "hyprland.conf" (import ./conf/hyprland.conf.nix {inherit lib config;});
           force = true;
         };
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
@@ -73,8 +69,6 @@ in {
             wireplumber
             network
             #tray
-            #inputs.ags.packages.${pkgs.system}.battery
-            #battery
             #gtksourceview
             #webkitgtk
             #accountsservice

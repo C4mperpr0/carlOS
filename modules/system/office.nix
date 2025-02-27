@@ -35,6 +35,9 @@ in {
     environment.systemPackages = with pkgs;
       [
         firefox
+        kdePackages.konsole
+        kdePackages.dolphin
+        kdePackages.qt6ct # for theming dolphin
         #pkgs-unstable.obsidian
         obsidian
         kate

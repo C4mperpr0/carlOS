@@ -13,5 +13,6 @@
     ./programming.nix
     ./ui-utils.nix
     ./desktop-environment.nix
+    ./hyprland
   ];
 }
