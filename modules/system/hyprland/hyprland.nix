@@ -61,18 +61,33 @@ in {
           #   package = pkgs-unstable.ags;
           enable = true;
           configDir = ./ags;
-          extraPackages = with pkgs-unstable.astal; [
-            io
-            hyprland
-            mpris
-            battery
-            wireplumber
-            network
-            #tray
-            #gtksourceview
-            #webkitgtk
-            #accountsservice
-          ];
+          extraPackages = with inputs.ags.packages.${flake-confs.system};
+            [
+              astal3
+              astal4
+              greet
+              auth
+              cava
+              apps
+              notifd
+              gjs
+              io
+              hyprland
+              mpris
+              battery
+              wireplumber
+              network
+              bluetooth
+              tray
+              #gtksourceview
+              #webkitgtk
+              #accountsservice
+            ]
+            ++ (with pkgs; [
+              glib
+              gobject-introspection
+              gtk3
+            ]);
         };
       };
       home.packages = with pkgs; [

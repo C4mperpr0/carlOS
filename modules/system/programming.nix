@@ -36,6 +36,8 @@ in {
             gtts
             simple-term-menu
             psycopg2
+            selenium
+            pygobject3
           ]))
       ]
       ++ lib.optionals cfg.game-development.enable [
