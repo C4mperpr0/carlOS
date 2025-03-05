@@ -18,6 +18,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs;
       [
+        direnv # for nix dev shells
         monocraft
         vscodium
         wev # for detecting keycodes
@@ -32,11 +33,9 @@ in {
             pandas
             pynput
             beautifulsoup4
-            pyautogui
             gtts
             simple-term-menu
             psycopg2
-            selenium
             pygobject3
           ]))
       ]

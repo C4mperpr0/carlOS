@@ -51,7 +51,7 @@
 
   # repair hibernation
   security.protectKernelImage = false;
-    
+
   # use latest kernel version (for newer hardware compatability)
   boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
 
@@ -65,14 +65,20 @@
   # make AMD iGPU work
   boot.initrd.kernelModules = ["amdgpu"];
   #services.xserver.videoDrivers = ["amdgpu"];
-  boot.kernelParams = [ "amdgpu.runpm=1" ];
-  hardware.firmware = [ pkgs.linux-firmware ];
+  boot.kernelParams = ["amdgpu.runpm=1"];
+  hardware.firmware = [pkgs.linux-firmware];
   environment.systemPackages = with pkgs; [
     clinfo
   ];
-  #hardware.graphics.extraPackages = with pkgs; [
-  #  rocmPackages.clr.icd
-  #];
+  hardware.graphics.extraPackages = with pkgs; [
+    #rocmPackages.clr.icd
+    mesa
+    mesa.drivers
+    vaapiVdpau
+    libvdpau-va-gl
+    libva
+    libva-utils
+  ];
   hardware.graphics.enable32Bit = true; # For 32 bit applications
 
   # Enable CUPS to print documents.

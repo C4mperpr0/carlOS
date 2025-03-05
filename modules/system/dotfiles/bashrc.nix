@@ -27,4 +27,6 @@ buildName: userName:
       # thefuck
       eval "$(thefuck --alias fuck)"
       eval "$(thefuck --alias fu)"
+      # nix direnv (for dev shells)
+      eval "$(direnv hook bash)"
 ''

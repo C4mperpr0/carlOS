@@ -4,6 +4,9 @@
 }: let
   colors = config.lib.stylix.colors.withHashtag;
 in ''
+##### Testing #####
+source = ./test.conf # needs to be first to override others
+
 ##### startup #####
 ${builtins.readFile ./startup.conf}
 
@@ -23,33 +26,16 @@ ${builtins.readFile ./input.conf}
 ${builtins.readFile ./window-manager.conf}
 
 ##### programs #####
-bind = SUPER, SUPER_L, exec, pkill tofi-drun || tofi-drun --config ${builtins.toFile "tofi.conf" (import ./tofi-config.nix {inherit config;})}
-bind = SUPER, T, exec, konsole
-bind = SUPER, E, exec, dolphin
-bind = SUPER, B, exec, firefox
-bind = SUPER, O, exec, obsidian
-bind = SUPER, K, exec, kdeconnect-app
-bind = SUPER, ESCAPE, exec, btop
-# media
-bind = SUPER, M, submap, media
-submap = media
-bind = , M, exec, spotify
-bind = , W, exec, whatsapp-for-linux
-bind = , S, exec, signal
-bind = , catchall, submap, reset
-submap = reset
+${builtins.readFile ./binds.conf}
 
 ##### window rules #####
 # general design
 ${builtins.readFile ./design.conf}
 
-# SpeedCrunch
-windowrule = float, title:^(SpeedCrunch)$
-windowrule = move 75% 65%, title:^(SpeedCrunch)$
-windowrule = size 25% 35%, title:^(SpeedCrunch)$
-windowrule = opacity 0.6, title:^(SpeedCrunch)$
+## special window rules
+${builtins.readFile ./special_window_rules.conf}
 
-# ${colors.base01}
+# colors example: ${colors.base01}
 
 #windowrulev2 = workspace name:Spotify, class:Spotify
 windowrule = animation popin, tofi-drun # not working correctly yet, name not correct

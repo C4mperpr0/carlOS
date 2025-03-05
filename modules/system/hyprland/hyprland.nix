@@ -19,7 +19,13 @@ in {
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
     services.xserver.enable = true;
-    programs.hyprland.enable = true;
+    
+    programs = {
+      hyprland.enable = true;
+      hyprlock.enable = true;
+    };
+
+    services.hypridle.enable = true;
 
     nixosModules.stylix.enable = true;
     nixosModules.greetd.enable = false;
@@ -49,6 +55,8 @@ in {
         # source = ./hyprlock;
         #  recursive = true;
         #};
+        "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs;};
+        "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
       };
 
       imports = [inputs.ags.homeManagerModules.default];
@@ -90,14 +98,20 @@ in {
             ]);
         };
       };
-      home.packages = with pkgs; [
-        hyprpaper
-        kdePackages.qtwayland
-        brightnessctl
-        libnotify
-        tofi
-        pavucontrol # for controlling pulse audio graphically
-      ];
+      home.packages = with pkgs;
+        [
+          hyprpaper
+          kdePackages.qtwayland
+          brightnessctl
+          libnotify
+          tofi
+          pavucontrol # for controlling pulse audio graphically
+          dunst # for notifications
+          wl-screenrec # TODO: make this work to replace wf-recorder
+          wf-recorder
+          wdisplays # display setup util 
+        ]
+        ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
   };
 }
