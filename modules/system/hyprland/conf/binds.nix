@@ -1,3 +1,5 @@
+{config, ...}:
+''
 # general binds
 bind = SUPER, SUPER_L, exec, pkill tofi-drun || tofi-drun --config ${builtins.toFile "tofi.conf" (import ./tofi-config.nix {inherit config;})}
 bind = SUPER, P, exec, pkill wdisplays || wdisplays
@@ -15,4 +17,4 @@ bind = , W, exec, whatsapp-for-linux
 bind = , S, exec, signal
 bind = , catchall, submap, reset
 submap = reset
-
+''

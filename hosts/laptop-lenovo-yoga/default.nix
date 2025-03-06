@@ -50,7 +50,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # repair hibernation
-  security.protectKernelImage = false;
+  #security.protectKernelImage = false;
+
 
   # use latest kernel version (for newer hardware compatability)
   boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
@@ -65,7 +66,7 @@
   # make AMD iGPU work
   boot.initrd.kernelModules = ["amdgpu"];
   #services.xserver.videoDrivers = ["amdgpu"];
-  boot.kernelParams = ["amdgpu.runpm=1"];
+  boot.kernelParams = ["amdgpu.runpm=1"];# "acpi.ec_no_wakeup=1" "mem_sleep_default=deep"]; # latter might fix sleep issues
   hardware.firmware = [pkgs.linux-firmware];
   environment.systemPackages = with pkgs; [
     clinfo

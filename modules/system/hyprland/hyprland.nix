@@ -110,6 +110,12 @@ in {
           wl-screenrec # TODO: make this work to replace wf-recorder
           wf-recorder
           wdisplays # display setup util 
+          rofi-rbw-wayland # bitwarden rofi GUI 
+          rbw
+          pinentry-all # maybe not all are needed
+          wtype
+          rofi
+          wl-clipboard
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };

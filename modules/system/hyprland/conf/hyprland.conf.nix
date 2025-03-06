@@ -26,7 +26,7 @@ ${builtins.readFile ./input.conf}
 ${builtins.readFile ./window-manager.conf}
 
 ##### programs #####
-${builtins.readFile ./binds.conf}
+${import ./binds.nix {inherit config;}}
 
 ##### window rules #####
 # general design
