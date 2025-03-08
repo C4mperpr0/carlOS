@@ -35,7 +35,7 @@ ${builtins.readFile ./design.conf}
 ## special window rules
 ${builtins.readFile ./special_window_rules.conf}
 
-# colors example: ${colors.base01}
+# colors example: ${config.lib.stylix.colors.base01}
 
 #windowrulev2 = workspace name:Spotify, class:Spotify
 windowrule = animation popin, tofi-drun # not working correctly yet, name not correct

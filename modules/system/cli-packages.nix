@@ -20,6 +20,7 @@ in {
       sl
       nix-search-cli
       asciiquarium
+      hollywood
       hyfetch # gay fastfetch frontend
       fastfetch # better neofetch (backend for hyfetch)
       btop # better htop

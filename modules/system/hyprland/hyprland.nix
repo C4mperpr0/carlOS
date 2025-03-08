@@ -19,6 +19,11 @@ in {
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
     services.xserver.enable = true;
+
+    services.logind = {
+      powerKey = "ignore";
+      powerKeyLongPress = "poweroff";
+    };
     
     programs = {
       hyprland.enable = true;
@@ -57,6 +62,7 @@ in {
         #};
         "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs;};
         "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
+        "rofi/carlOS-theme.rasi".text = import ./rofi-carlOS-theme.rasi.nix {inherit config;};
       };
 
       imports = [inputs.ags.homeManagerModules.default];
@@ -115,6 +121,7 @@ in {
           pinentry-all # maybe not all are needed
           wtype
           rofi
+          rofi-power-menu
           wl-clipboard
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
