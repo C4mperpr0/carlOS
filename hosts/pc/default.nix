@@ -44,6 +44,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.nvidia.open = false;
   services.xserver.videoDrivers = [
     "nvidia" # https://github.com/NixOS/nixpkgs/issues/80936#issuecomment-1003784682
   ];
@@ -73,8 +74,6 @@
     extraSpecialArgs = {unstable = pkgs;};
     useGlobalPkgs = true;
     users.${flake-confs.user.name} = {pkgs, ...}: {
-      imports = [../../modules/nvim/neovim.nix];
-      home-modules.nvim.enable = true;
       home.stateVersion = "23.11";
     };
   };
