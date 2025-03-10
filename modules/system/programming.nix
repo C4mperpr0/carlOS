@@ -16,6 +16,8 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    #homeManagerModules.nvim.enable = true;
+
     environment.systemPackages = with pkgs;
       [
         direnv # for nix dev shells

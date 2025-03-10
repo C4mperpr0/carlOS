@@ -5,6 +5,8 @@
   config,
   lib,
   buildName,
+  inputs,
+  self,
   ...
 }: let
   cfg = config.nixosModules.cli-packages;
@@ -48,15 +50,27 @@ in {
       pkgs-unstable.nh # yet another nix helper
       nano
       pkgs-unstable.nix-inspect
-      (python3.withPackages (ps: # xontribs for xonsh
-        with ps; [
-          numpy
-          #xontrib-zoxide
-        ]))
+      (python3.withPackages (ps:
+        # xontribs for xonsh
+          with ps; [
+            numpy
+            #xontrib-zoxide
+          ]))
     ];
 
-    home-manager.users.${flake-confs.user.name}.xdg = {
-      configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix buildName flake-confs.user.name;
+    home-manager.users.${flake-confs.user.name} = {
+      imports = [
+        inputs.dromedar-nvim.homeManagerModules.nvim
+      ];
+      xdg = {
+        configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix buildName flake-confs.user.name;
+      };
+      programs.nvim-dromedar = {
+        enable = true;
+        flake-path = self;
+        username = flake-confs.user.name;
+        hostname = flake-confs.hostname;
+      };
     };
 
     programs = {

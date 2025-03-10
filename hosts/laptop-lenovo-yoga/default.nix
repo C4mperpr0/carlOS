@@ -52,7 +52,6 @@
   # repair hibernation
   #security.protectKernelImage = false;
 
-
   # use latest kernel version (for newer hardware compatability)
   boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
 
@@ -66,7 +65,7 @@
   # make AMD iGPU work
   boot.initrd.kernelModules = ["amdgpu"];
   #services.xserver.videoDrivers = ["amdgpu"];
-  boot.kernelParams = ["amdgpu.runpm=1"];# "acpi.ec_no_wakeup=1" "mem_sleep_default=deep"]; # latter might fix sleep issues
+  boot.kernelParams = ["amdgpu.runpm=1"]; # "acpi.ec_no_wakeup=1" "mem_sleep_default=deep"]; # latter might fix sleep issues
   hardware.firmware = [pkgs.linux-firmware];
   environment.systemPackages = with pkgs; [
     clinfo
@@ -100,11 +99,15 @@
 
   home-manager = {
     backupFileExtension = "bak";
-    extraSpecialArgs = {unstable = pkgs;};
+    extraSpecialArgs = {
+      unstable = pkgs;
+      username = flake-confs.user.name;
+      hostname = flake-confs.hostname;
+    };
     useGlobalPkgs = true;
     users.${flake-confs.user.name} = {pkgs, ...}: {
-      imports = [../../modules/nvim/neovim.nix];
-      home-modules.nvim.enable = true;
+      # imports = [../../modules/nvim/neovim.nix];
+      # home-modules.nvim.enable = true;
       home.stateVersion = "23.11";
     };
   };

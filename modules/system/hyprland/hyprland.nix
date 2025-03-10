@@ -123,6 +123,7 @@ in {
           rofi
           rofi-power-menu
           wl-clipboard
+          cliphist
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };

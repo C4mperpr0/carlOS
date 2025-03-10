@@ -1,6 +1,7 @@
 {
   inputs,
   flake-confs,
+  self,
 }: let
   system = flake-confs.system;
   pkgs = import inputs.nixpkgs {
@@ -13,10 +14,11 @@
   };
   lib = inputs.nixpkgs.lib;
   commonModules = [
-      inputs.home-manager.nixosModules.home-manager
-      ../modules/system
-      #inputs.minegrub-theme.nixosModules.default
-      inputs.stylix.nixosModules.stylix
+    inputs.home-manager.nixosModules.home-manager
+    #inputs.dromedar-nvim.homeManagerModules.nvim
+    ../modules/system
+    #inputs.minegrub-theme.nixosModules.default
+    inputs.stylix.nixosModules.stylix
   ];
 in {
   # universal laptop config
@@ -26,21 +28,27 @@ in {
       inherit inputs flake-confs pkgs pkgs-unstable;
       buildName = "laptop";
     };
-    modules = commonModules ++ [
-      ./laptop
-    ];
+    modules =
+      commonModules
+      ++ [
+        ./laptop
+      ];
   };
 
   # specific lenovo yoga pro 7 gen 9 config
   laptop-lenovo-yoga = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs flake-confs pkgs pkgs-unstable;
+      inherit self inputs flake-confs pkgs pkgs-unstable;
+      #username = flake-confs.user.name;
+      #hostname = flake-confs.hostname;
       buildName = "laptop-lenovo-yoga";
     };
-    modules = commonModules ++ [
-      ./laptop-lenovo-yoga
-    ];
+    modules =
+      commonModules
+      ++ [
+        ./laptop-lenovo-yoga
+      ];
   };
 
   # universal desktop pc config
@@ -50,8 +58,10 @@ in {
       inherit inputs flake-confs pkgs pkgs-unstable;
       buildName = "pc";
     };
-    modules = commonModules ++ [
-      ./pc
-    ];
+    modules =
+      commonModules
+      ++ [
+        ./pc
+      ];
   };
 }

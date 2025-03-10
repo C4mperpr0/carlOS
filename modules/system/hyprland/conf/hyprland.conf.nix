@@ -41,7 +41,7 @@ ${builtins.readFile ./special_window_rules.conf}
 windowrule = animation popin, tofi-drun # not working correctly yet, name not correct
 
 ###### workspace rules #####
-bind = SUPER, C, movetoworkspace, special
+#bind = SUPER, C, movetoworkspace, special
 #workspace = s[true], name:Shell, persistens:true, on-created-empty:exec konsole
 #workspace = s[true], name:Browsing, persistens:true
 #workspace = s[true], name:Spotify, on-created-empty:exec spotify

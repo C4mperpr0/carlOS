@@ -13,6 +13,13 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dromedar-nvim = {
+      url = "gitlab:dr0med4r/nvim-nixos";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "nixpkgs";
+      };
+    };
     #minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
@@ -20,7 +27,7 @@
     flake-confs = import ./flake-confs.nix;
   in {
     nixosConfigurations = import ./hosts {
-      inherit inputs flake-confs;
+      inherit inputs flake-confs self;
     };
   };
 }

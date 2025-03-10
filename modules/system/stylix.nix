@@ -53,7 +53,6 @@ in {
         stylix = {
           autoEnable = true;
           targets = {
-            kde.enable = true;
             neovim.enable = false;
           };
         };
