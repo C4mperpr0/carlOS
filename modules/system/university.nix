@@ -26,7 +26,7 @@ in {
       jupyter
       #qgis
       gradle
-      jetbrains.idea-ultimate
+      #jetbrains.idea-ultimate
       dbeaver-bin
 
       # pokedex programmieren 2
