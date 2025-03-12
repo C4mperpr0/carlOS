@@ -49,7 +49,6 @@
     "nvidia" # https://github.com/NixOS/nixpkgs/issues/80936#issuecomment-1003784682
   ];
 
-  networking.hostName = flake-confs.user.name; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -62,20 +61,8 @@
   # make Wa do the Com
   services.xserver.wacom.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${flake-confs.user.name} = {
-    isNormalUser = true;
-    description = "${flake-confs.user.description}";
-    extraGroups = ["networkmanager" "wheel"];
-  };
-
-  home-manager = {
-    backupFileExtension = "bak";
-    extraSpecialArgs = {unstable = pkgs;};
-    useGlobalPkgs = true;
-    users.${flake-confs.user.name} = {pkgs, ...}: {
-      home.stateVersion = "23.11";
-    };
+  home-manager.users.${flake-confs.user.name} = {pkgs, ...}: {
+    home.stateVersion = "23.11";
   };
 
   #  nixpkgs = {

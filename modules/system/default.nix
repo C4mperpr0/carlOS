@@ -14,5 +14,6 @@
     ./ui-utils.nix
     ./desktop-environment.nix
     ./hyprland
+    ./git.nix
   ];
 }

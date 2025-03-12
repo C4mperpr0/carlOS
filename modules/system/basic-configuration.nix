@@ -11,6 +11,24 @@
       options = "--delete-older-than 7d";
     };
   };
+  
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.${flake-confs.user.name} = {
+    isNormalUser = true;
+    description = "${flake-confs.user.description}";
+    extraGroups = ["networkmanager" "wheel"];
+  };
+
+  # home-manager
+  home-manager = {
+    backupFileExtension = "hm-bak";
+    extraSpecialArgs = {
+      unstable = pkgs;
+      username = flake-confs.user.name;
+      hostname = flake-confs.hostname;
+    };
+    useGlobalPkgs = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -48,7 +66,11 @@
     pulse.enable = true;
   };
 
+  # add supported filesystems
   boot.supportedFilesystems = ["nfts"];
+
+  # set hostname
+  networking.hostName = flake-confs.hostname;
 
   # naming in grub
   system.nixos.tags = ["CarlOS"];

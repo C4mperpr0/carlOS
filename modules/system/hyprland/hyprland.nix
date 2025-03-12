@@ -25,6 +25,14 @@ in {
       powerKeyLongPress = "poweroff";
     };
 
+    # try to fix kde-connect remote input
+    xdg.portal.enable = true;
+    #xdg.portal.extraPortals = with pkgs; [
+    #  xdg-dekstop-portal-gtk
+    #  xdg-dekstop-portal-kde
+    #];
+    xdg.portal.wlr.enable = true;
+
     programs = {
       hyprland.enable = true;
       hyprlock.enable = true;
@@ -124,7 +132,9 @@ in {
           rofi-power-menu
           wl-clipboard
           cliphist
-          xdg-desktop-portal-hyprland # make kde-connect remote input work
+          
+          xdg-desktop-portal-gtk
+          xdg-desktop-portal-kde
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };

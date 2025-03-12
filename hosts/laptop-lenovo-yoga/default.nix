@@ -36,6 +36,7 @@
       virtualization.enable = true;
       basic-languages.enable = true;
     };
+    git.enable = true;
     #stylix = {
     #  enable = true;
     #};
@@ -55,7 +56,6 @@
   # use latest kernel version (for newer hardware compatability)
   boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
 
-  networking.hostName = flake-confs.hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -90,26 +90,8 @@
   # make Wa do the Com
   services.xserver.wacom.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${flake-confs.user.name} = {
-    isNormalUser = true;
-    description = "${flake-confs.user.description}";
-    extraGroups = ["networkmanager" "wheel"];
-  };
-
-  home-manager = {
-    backupFileExtension = "bak";
-    extraSpecialArgs = {
-      unstable = pkgs;
-      username = flake-confs.user.name;
-      hostname = flake-confs.hostname;
-    };
-    useGlobalPkgs = true;
-    users.${flake-confs.user.name} = {pkgs, ...}: {
-      # imports = [../../modules/nvim/neovim.nix];
-      # home-modules.nvim.enable = true;
-      home.stateVersion = "23.11";
-    };
+  home-manager.users.${flake-confs.user.name} = {pkgs, ...}: {
+    home.stateVersion = "23.11";
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?
