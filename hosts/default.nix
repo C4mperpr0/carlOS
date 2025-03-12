@@ -40,8 +40,6 @@ in {
     inherit system;
     specialArgs = {
       inherit self inputs flake-confs pkgs pkgs-unstable;
-      #username = flake-confs.user.name;
-      #hostname = flake-confs.hostname;
       buildName = "laptop-lenovo-yoga";
     };
     modules =

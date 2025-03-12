@@ -24,7 +24,7 @@ in {
       powerKey = "ignore";
       powerKeyLongPress = "poweroff";
     };
-    
+
     programs = {
       hyprland.enable = true;
       hyprlock.enable = true;
@@ -115,8 +115,8 @@ in {
           dunst # for notifications
           wl-screenrec # TODO: make this work to replace wf-recorder
           wf-recorder
-          wdisplays # display setup util 
-          rofi-rbw-wayland # bitwarden rofi GUI 
+          wdisplays # display setup util
+          rofi-rbw-wayland # bitwarden rofi GUI
           rbw
           pinentry-all # maybe not all are needed
           wtype
@@ -124,6 +124,7 @@ in {
           rofi-power-menu
           wl-clipboard
           cliphist
+          xdg-desktop-portal-hyprland # make kde-connect remote input work
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
