@@ -16,10 +16,9 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    programs.direnv.enable = true; # for nix dev-shells
     environment.systemPackages = with pkgs;
       [
-        direnv # for nix dev shells
-        monocraft
         vscodium
         wev # for detecting keycodes
         xdotool

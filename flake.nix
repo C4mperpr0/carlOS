@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager.url = "github:nix-community/home-manager?ref=release-24.11";
-    ags.url = "github:aylur/ags"; # Aylur's GTK Shell 
+    ags.url = "github:aylur/ags"; # Aylur's GTK Shell
     astal.url = "github:aylur/astal"; # needed for ags
     stylix.url = "github:danth/stylix/release-24.11";
     spicetify-nix.url = "github:the-argus/spicetify-nix"; # spicetify-cli via a flake
@@ -19,6 +19,10 @@
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "nixpkgs";
       };
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     #minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };

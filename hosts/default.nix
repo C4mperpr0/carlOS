@@ -14,11 +14,10 @@
   };
   lib = inputs.nixpkgs.lib;
   commonModules = [
-    inputs.home-manager.nixosModules.home-manager
-    #inputs.dromedar-nvim.homeManagerModules.nvim
     ../modules/system
-    #inputs.minegrub-theme.nixosModules.default
+    inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
+    inputs.nix-index-database.nixosModules.nix-index
   ];
 in {
   # universal laptop config

@@ -39,15 +39,12 @@ in {
       nixos-generators # for generating ISOs
       cpulimit # limit cpu usage for a certain process
       tealdeer # compact man pages
-      comma # comma tool for nix shell temp bin automation
-      nix-index # nix packages index for comma to search in
     ];
 
-    fonts.packages = with pkgs; [nerdfonts];
+    fonts.packages = with pkgs; [nerdfonts monocraft];
 
     environment.systemPackages = with pkgs; [
       git
-      pkgs-unstable.nh # yet another nix helper
       nano
       pkgs-unstable.nix-inspect
       (python3.withPackages (ps:
@@ -65,15 +62,23 @@ in {
       xdg = {
         configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix buildName flake-confs.user.name;
       };
-      programs.nvim-dromedar = {
-        enable = true;
-        flake-path = self;
-        username = flake-confs.user.name;
-        hostname = flake-confs.hostname;
+      programs = {
+        nvim-dromedar = {
+          enable = true;
+          flake-path = self;
+          username = flake-confs.user.name;
+          hostname = flake-confs.hostname;
+        };
       };
     };
 
     programs = {
+      nix-index-database.comma.enable = true; # comma tool for nix shell temp bin automation
+      nix-index.enable = true; # integrate with shells' command-not-found
+      nh = {
+        enable = true;
+        flake = "/home/${flake-confs.user.name}/Documents/git/carlOS";
+      };
       xonsh = {
         enable = true;
         config = "";
