@@ -25,7 +25,7 @@ in {
   laptop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs flake-confs pkgs pkgs-unstable;
+      inherit self inputs flake-confs pkgs pkgs-unstable;
       buildName = "laptop";
     };
     modules =
@@ -53,7 +53,7 @@ in {
   pc = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs flake-confs pkgs pkgs-unstable;
+      inherit self inputs flake-confs pkgs pkgs-unstable;
       buildName = "pc";
     };
     modules =
