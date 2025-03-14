@@ -35,6 +35,19 @@ in {
   };
 
   # specific lenovo yoga pro 7 gen 9 config
+  generic_desktop = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit self inputs flake-confs pkgs pkgs-unstable;
+      buildName = "generic-desktop";
+    };
+    modules =
+      commonModules
+      ++ [
+        ./generic_desktop
+      ];
+
+  # specific lenovo yoga pro 7 gen 9 config
   laptop-lenovo-yoga = lib.nixosSystem {
     inherit system;
     specialArgs = {
