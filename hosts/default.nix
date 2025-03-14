@@ -44,7 +44,7 @@ in {
     modules =
       commonModules
       ++ [
-        ./generic_desktop
+        ./generic-desktop
       ];
   };
 
