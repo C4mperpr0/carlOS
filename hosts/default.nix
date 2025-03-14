@@ -46,6 +46,7 @@ in {
       ++ [
         ./generic_desktop
       ];
+  };
 
   # specific lenovo yoga pro 7 gen 9 config
   laptop-lenovo-yoga = lib.nixosSystem {
