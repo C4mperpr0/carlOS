@@ -15,5 +15,6 @@
     ./desktop-environment.nix
     ./hyprland
     ./git.nix
+    ./plymouth.nix
   ];
 }

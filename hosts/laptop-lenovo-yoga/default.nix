@@ -44,6 +44,7 @@
     social.enable = true;
     cli-packages.enable = true;
     ui-utils.enable = true;
+    plymouth.enable = true;
   };
 
   # Bootloader.

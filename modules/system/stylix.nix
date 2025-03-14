@@ -46,6 +46,8 @@ in {
         package = pkgs.vimix-cursors;
         name = "Vimix-cursors";
       };
+      
+      targets.plymouth.enable = false;
     };
 
     home-manager.sharedModules = [
