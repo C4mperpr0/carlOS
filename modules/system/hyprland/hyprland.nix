@@ -25,6 +25,8 @@ in {
       powerKeyLongPress = "poweroff";
     };
 
+    services.power-profiles-daemon.enable = true;
+
     # try to fix kde-connect remote input
     xdg.portal.enable = true;
     #xdg.portal.extraPortals = with pkgs; [
@@ -132,7 +134,7 @@ in {
           rofi-power-menu
           wl-clipboard
           cliphist
-          
+
           xdg-desktop-portal-gtk
           xdg-desktop-portal-kde
         ]

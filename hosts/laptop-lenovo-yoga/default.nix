@@ -45,6 +45,7 @@
     cli-packages.enable = true;
     ui-utils.enable = true;
     plymouth.enable = true;
+    ollama.enable = true;
   };
 
   # Bootloader.
@@ -55,7 +56,7 @@
   #security.protectKernelImage = false;
 
   # use latest kernel version (for newer hardware compatability)
-  boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
+  #boot.kernelPackages = pkgs-unstable.linuxPackages_6_11;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

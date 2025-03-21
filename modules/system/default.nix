@@ -16,5 +16,6 @@
     ./hyprland
     ./git.nix
     ./plymouth.nix
+    ./ollama.nix
   ];
 }

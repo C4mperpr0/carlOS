@@ -2,6 +2,7 @@
 ''
 # general binds
 bind = , XF86PowerOff, exec, pkill rofi || rofi -show p -modi p:rofi-power-menu -theme carlOS-theme
+bind = , XF86Favorites, exec, echo -e "power-saver\nbalanced\nperformance" | grep -n $(powerprofilesctl get) | awk -F: '{print ($1-1) + 1}' | while read index; do profiles=("power-saver" "balanced" "performance"); powerprofilesctl set "''${profiles[($index % 3)]}"; done && notify-send "Power-Mode set to $(powerprofilesctl get)"
 bind = SUPER_SHIFT, L, exec, pkill rofi || rofi -show p -modi p:rofi-power-menu -theme carlOS-theme
 bind = SUPER, SUPER_L, exec, pkill tofi-drun || tofi-drun --config ${builtins.toFile "tofi.conf" (import ./tofi-config.nix {inherit config;})}
 bind = SUPER, period, exec, pkill rofi-rbw || rofi-rbw --selector rofi --clipboarder wl-copy --typer wtype --selector-args="-theme carlOS-theme" 

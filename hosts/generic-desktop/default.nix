@@ -7,11 +7,6 @@
   flake-confs,
   ...
 }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
   nixosModules = {
     #minegrub.enable = true;
     university.enable = true;

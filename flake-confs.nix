@@ -11,7 +11,7 @@
         display-dimm-after = 240;
         display-off-after = 270;
         lock-after = 300;
-        sleep-after = 315;
+        sleep-after = 1800;
       };
     };
   };
