@@ -37,6 +37,7 @@
     cli-packages.enable = true;
     ui-utils.enable = true;
     plymouth.enable = true;
+    ollama.enable = true;
   };
 
   # Bootloader.
