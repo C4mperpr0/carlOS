@@ -59,7 +59,7 @@ in {
         inputs.dromedar-nvim.homeManagerModules.nvim
       ];
       xdg = {
-        configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix flake-confs.buildName flake-confs.user.name;
+        configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix flake-confs.buildname flake-confs.user.name;
       };
       programs = {
         nvim-dromedar = {
