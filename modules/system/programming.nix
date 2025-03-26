@@ -24,6 +24,7 @@ in {
         xdotool
         hoppscotch # debugging http requests
         arduino
+        nixos-firewall-tool
         (python3.withPackages (ps:
           with ps; [
             requests
