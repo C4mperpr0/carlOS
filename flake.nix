@@ -33,5 +33,6 @@
     nixosConfigurations = import ./hosts {
       inherit inputs flake-confs self;
     };
+    modules = (import ./modules {inherit inputs flake-confs;}).modules;
   };
 }

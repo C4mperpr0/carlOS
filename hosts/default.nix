@@ -19,6 +19,8 @@
     inputs.stylix.nixosModules.stylix
     inputs.nix-index-database.nixosModules.nix-index
   ];
+  modules =
+    (import ../modules {inherit inputs flake-confs;}).modules;
 in {
   # universal laptop config
   laptop = lib.nixosSystem {
@@ -38,8 +40,7 @@ in {
   generic-desktop = {
     #lib.nixosSystem {
     buildName = "generic-desktop";
-    modules =
-      commonModules;
+    modules = modules;
   };
 
   # specific lenovo yoga pro 7 gen 9 config
@@ -50,7 +51,7 @@ in {
       buildName = "laptop-lenovo-yoga";
     };
     modules =
-      commonModules
+      modules
       ++ [
         ./laptop-lenovo-yoga
       ];

@@ -4,6 +4,7 @@
     description = "Carl";
   };
   hostname = "nixos";
+  buildname = "carlOS";
   system = "x86_64-linux";
   desktop-environment = {
     hyprland = {
