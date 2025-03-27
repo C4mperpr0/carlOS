@@ -76,8 +76,7 @@ in {
       nix-index.enable = true; # integrate with shells' command-not-found
       nh = {
         enable = true;
-        flake = ./.;
-
+        flake = flake-confs.flake-path;
       };
       xonsh = {
         enable = true;
