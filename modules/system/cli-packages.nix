@@ -76,7 +76,7 @@ in {
       nix-index.enable = true; # integrate with shells' command-not-found
       nh = {
         enable = true;
-        #flake = "/home/${flake-confs.user.name}/Documents/git/carlOS";
+        flake = ./.;
 
       };
       xonsh = {
