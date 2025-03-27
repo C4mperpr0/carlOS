@@ -73,5 +73,5 @@
   networking.hostName = flake-confs.hostname;
 
   # naming in grub
-  system.nixos.tags = ["CarlOS"];
+  system.nixos.tags = ["CarlOS:${flake-confs.buildname}"];
 }
