@@ -22,52 +22,11 @@
   modules =
     (import ../modules {inherit inputs flake-confs;}).modules;
 in {
-  # universal laptop config
-  laptop = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit self inputs flake-confs pkgs pkgs-unstable;
-      buildName = "laptop";
-    };
-    modules =
-      commonModules
-      ++ [
-        ./laptop
-      ];
-  };
 
-  # specific lenovo yoga pro 7 gen 9 config
+  # generic-desktop config
   generic-desktop = {
     #lib.nixosSystem {
     buildName = "generic-desktop";
     modules = modules;
-  };
-
-  # specific lenovo yoga pro 7 gen 9 config
-  laptop-lenovo-yoga = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit self inputs flake-confs pkgs pkgs-unstable;
-      buildName = "laptop-lenovo-yoga";
-    };
-    modules =
-      modules
-      ++ [
-        ./laptop-lenovo-yoga
-      ];
-  };
-
-  # universal desktop pc config
-  pc = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit self inputs flake-confs pkgs pkgs-unstable;
-      buildName = "pc";
-    };
-    modules =
-      commonModules
-      ++ [
-        ./pc
-      ];
   };
 }
