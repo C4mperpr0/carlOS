@@ -4,6 +4,7 @@
   config,
   flake-confs,
   pkgs,
+  carlOS-lib,
   ...
 }: let
   cfg = config.nixosModules.hyprland;
@@ -14,7 +15,10 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable (let i=1; in { # this let expression is for checking if all flake-confs are set. This might be obsolete to do here, bc of nix's lazy evaluation 
+  config = lib.mkIf cfg.enable (let
+    i = 1;
+  in {
+    # this let expression is for checking if all flake-confs are set. This might be obsolete to do here, bc of nix's lazy evaluation
 
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
@@ -70,7 +74,7 @@ in {
         # source = ./hyprlock;
         #  recursive = true;
         #};
-        "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs;};
+        "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs carlOS-lib;};
         "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
         "rofi/carlOS-theme.rasi".text = import ./rofi-carlOS-theme.rasi.nix {inherit config;};
       };
