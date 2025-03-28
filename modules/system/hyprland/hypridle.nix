@@ -1,6 +1,6 @@
 {
-  inputs,
   flake-confs,
+  carlOS-lib,
   ...
 }: let
   specific-confs =
@@ -16,7 +16,7 @@
       if builtins.hasAttr "display-off-after" specific-confs
       then specific-confs.display-off-after
       else 270;
-    lock-after = (inputs.carlOS.lib.check-flake-conf flake-confs "modules.hyprland.hypridle.lock-after" 300).value;
+    lock-after = (carlOS-lib.check-flake-conf flake-confs "modules.hyprland.hypridle.lock-after" 300).value;
     #if builtins.hasAttr "lock-after" specific-confs
     # then specific-confs.lock-after
     # else 300;

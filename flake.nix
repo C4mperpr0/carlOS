@@ -29,11 +29,11 @@
 
   outputs = inputs @ {self, ...}: let
     flake-confs = import ./flake-confs.nix;
-    inputs.carlOS.lib = import ./lib;
+    carlOS-lib = import ./lib;
   in {
     nixosConfigurations = import ./hosts {
       inherit inputs flake-confs self;
     };
-    modules = (import ./modules {inherit inputs flake-confs;}).modules;
+    modules = (import ./modules {inherit inputs flake-confs carlOS-lib;}).modules;
   };
 }
