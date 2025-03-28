@@ -1,9 +1,6 @@
 {
   lib,
   pkgs,
-  flake-confs,
-  pkgs-unstable,
-  inputs,
   config,
   ...
 }: let

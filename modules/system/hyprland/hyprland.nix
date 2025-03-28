@@ -4,7 +4,6 @@
   config,
   flake-confs,
   pkgs,
-  pkgs-unstable,
   ...
 }: let
   cfg = config.nixosModules.hyprland;
@@ -15,7 +14,8 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable (let i=1; in { # this let expression is for checking if all flake-confs are set. This might be obsolete to do here, bc of nix's lazy evaluation 
+
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
     services.xserver.enable = true;
@@ -140,5 +140,5 @@ in {
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
-  };
+  });
 }
