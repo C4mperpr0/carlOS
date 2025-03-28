@@ -29,6 +29,7 @@
 
   outputs = inputs @ {self, ...}: let
     flake-confs = import ./flake-confs.nix;
+    inputs.nixpkgs.lib = import ./lib {lib = inputs.nixpkgs.lib;};
   in {
     nixosConfigurations = import ./hosts {
       inherit inputs flake-confs self;

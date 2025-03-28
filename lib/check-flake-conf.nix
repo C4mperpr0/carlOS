@@ -1,3 +1,3 @@
-{flake-confs, attr, default} : {
+flake-confs : attr : default : {
     value = default;
 }
