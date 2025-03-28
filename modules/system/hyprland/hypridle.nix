@@ -1,9 +1,11 @@
 {
-  lib,
   flake-confs,
   ...
 }: let
-  specific-confs = flake-confs.modules.hyprland.hypridle;
+  specific-confs = 
+    if builtins.hasAttr "modules.hyprland.hypridle" flake-confs
+    then flake-confs.modules.hyprland.hypridle
+    else {};
   confs = {
     display-dimm-after =
       if builtins.hasAttr "display-dimm-after" specific-confs
