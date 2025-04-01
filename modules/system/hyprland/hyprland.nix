@@ -4,7 +4,6 @@
   config,
   flake-confs,
   pkgs,
-  carlOS-lib,
   ...
 }: let
   cfg = config.nixosModules.hyprland;
@@ -15,11 +14,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable (let
-    i = 1;
-  in {
-    # this let expression is for checking if all flake-confs are set. This might be obsolete to do here, bc of nix's lazy evaluation
-
+  config = lib.mkIf cfg.enable {
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
     services.xserver.enable = true;
@@ -70,11 +65,7 @@ in {
           force = true;
         };
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
-        #"hypr/" = {
-        # source = ./hyprlock;
-        #  recursive = true;
-        #};
-        "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs carlOS-lib;};
+        #"hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs;};
         "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
         "rofi/carlOS-theme.rasi".text = import ./rofi-carlOS-theme.rasi.nix {inherit config;};
       };
@@ -86,7 +77,6 @@ in {
           settings = import ./waybarsettings.nix;
         };
         ags = {
-          #   package = pkgs-unstable.ags;
           enable = true;
           configDir = ./ags;
           extraPackages = with inputs.ags.packages.${flake-confs.system};
@@ -144,5 +134,5 @@ in {
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
-  });
+  };
 }

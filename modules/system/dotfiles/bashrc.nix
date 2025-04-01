@@ -4,10 +4,8 @@ buildName: userName:
       hyfetch -p femboy -b fastfetch
 
       # nix commands (make it not depend on host!)
-      alias nichts="nh os switch /home/${userName}/Documents/git/carlOS/ -H ${buildName}"
-      alias garnichts="nh os switch /home/${userName}/Documents/git/carlOS/ --update -H ${buildName}"
-      alias tracenichts="sudo nixos-rebuild switch --flake /home/${userName}/Documents/git/carlOS/.#${buildName} --show-trace"
-      alias testhyprconf="sudo cp --remove-destination /home/carl/Documents/git/carlOS/modules/system/hyprland/hyprland.conf /home/carl/.config/hypr/hyprland.conf && hyprctl reload"
+      alias update="nh os switch -H ${buildName}"
+      alias upgrade="nh os switch --update -H ${buildName}"
 
       # program aliases
       alias cd="z"

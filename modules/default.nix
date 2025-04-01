@@ -1,9 +1,7 @@
 {
-  inputs,
-  ...
-}: 
-{
-  modules = [
+  inputs
+}: {
+  imports = [
     ./system
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix

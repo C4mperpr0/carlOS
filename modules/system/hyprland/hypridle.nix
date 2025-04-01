@@ -1,30 +1,15 @@
 {
   flake-confs,
-  carlOS-lib,
   ...
 }: let
-  specific-confs =
-    if builtins.hasAttr "modules.hyprland.hypridle" flake-confs
-    then flake-confs.modules.hyprland.hypridle
-    else {};
-  confs = {
-    display-dimm-after =
-      if builtins.hasAttr "display-dimm-after" specific-confs
-      then specific-confs.display-dimm-after
-      else 240;
-    display-off-after =
-      if builtins.hasAttr "display-off-after" specific-confs
-      then specific-confs.display-off-after
-      else 270;
-    lock-after = (carlOS-lib.check-flake-conf flake-confs "modules.hyprland.hypridle.lock-after" 300).value;
-    #if builtins.hasAttr "lock-after" specific-confs
-    # then specific-confs.lock-after
-    # else 300;
-    sleep-after =
-      if builtins.hasAttr "sleep-after" specific-confs
-      then specific-confs.sleep-after
-      else 315;
-  };
+  #carlOS-lib = import ../../../lib;
+  #confs = carlOS-lib.check-flake-conf flake-confs "modules.hyprland.hypridle" {
+  #   display-dimm-after = 240;
+  # display-off-after = 270;
+  # lock-after = 300;
+  # sleep-after = 315;
+  #};
+  confs = flake-confs.modules.hyprland.hypridle;
 in
   # https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/
   ''

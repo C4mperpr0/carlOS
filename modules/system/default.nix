@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./basic-configuration.nix
     #./minegrub.nix  
