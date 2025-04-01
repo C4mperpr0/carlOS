@@ -31,15 +31,15 @@
     flake-confs = import ./flake-confs.nix;
     #lib = super.lib // { carlOS = import ./lib; }
 
-    lib =
-      inputs.nixpkgs.lib.extend
-      (self: super: {
-        carlOS = import ./lib;
-      });
+    #lib =
+    #  inputs.nixpkgs.lib.extend
+    #  (self: super: {
+    #    carlOS = import ./lib;
+    #  });
   in {
     #nixosConfigurations = import ./hosts {
     #  inherit inputs flake-confs self carlOS-lib;
     #};
-    modules = import ./modules {inherit inputs flake-confs lib;};
+    modules = (import ./modules {inherit inputs flake-confs;}).modules;
   };
 }

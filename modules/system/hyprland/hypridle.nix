@@ -2,14 +2,13 @@
   flake-confs,
   ...
 }: let
-  #carlOS-lib = import ../../../lib;
-  #confs = carlOS-lib.check-flake-conf flake-confs "modules.hyprland.hypridle" {
-  #   display-dimm-after = 240;
-  # display-off-after = 270;
-  # lock-after = 300;
-  # sleep-after = 315;
-  #};
-  confs = flake-confs.modules.hyprland.hypridle;
+  carlOS-lib = import ../../../lib;
+  confs = carlOS-lib.check-flake-conf flake-confs "modules.hyprland.hypridle" {
+     display-dimm-after = 240;
+   display-off-after = 270;
+   lock-after = 300;
+   sleep-after = 315;
+  };
 in
   # https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/
   ''

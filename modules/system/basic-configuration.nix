@@ -1,33 +1,16 @@
-{pkgs, flake-confs,...}: {
-  # Enable Flakes
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes" "pipe-operators"];
-      auto-optimise-store = true;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-  
+{
+  pkgs,
+  flake-confs,
+  ...
+}: {
+  # TODO: remove this when nix conf works!!!
+  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${flake-confs.user.name} = {
     isNormalUser = true;
     description = "${flake-confs.user.description}";
     extraGroups = ["networkmanager" "wheel"];
-  };
-
-  # home-manager
-  home-manager = {
-    backupFileExtension = "hm-bak";
-    extraSpecialArgs = {
-      unstable = pkgs;
-      username = flake-confs.user.name;
-      hostname = flake-confs.hostname;
-    };
-    useGlobalPkgs = true;
   };
 
   # Set your time zone.
@@ -55,23 +38,4 @@
 
   # Configure console keymap
   console.keyMap = "de";
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # add supported filesystems
-  boot.supportedFilesystems = ["nfts"];
-
-  # set hostname
-  networking.hostName = flake-confs.hostname;
-
-  # naming in grub
-  system.nixos.tags = ["CarlOS:${flake-confs.buildname}"];
 }

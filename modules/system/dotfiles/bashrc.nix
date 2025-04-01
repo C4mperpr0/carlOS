@@ -6,6 +6,7 @@ buildName: userName:
       # nix commands (make it not depend on host!)
       alias update="nh os switch -H ${buildName}"
       alias upgrade="nh os switch --update -H ${buildName}"
+      alias devupdate="nix flake update carlOS && nh os switch . --hostname lenovo-yoga"
 
       # program aliases
       alias cd="z"
