@@ -17,6 +17,9 @@
 in {
   modules = [
     ./system
+    ./desktop-environment
+    ./developement
+    ./software
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
     inputs.nix-index-database.nixosModules.nix-index

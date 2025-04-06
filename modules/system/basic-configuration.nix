@@ -3,15 +3,6 @@
   flake-confs,
   ...
 }: {
-  # TODO: remove this when nix conf works!!!
-  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${flake-confs.user.name} = {
-    isNormalUser = true;
-    description = "${flake-confs.user.description}";
-    extraGroups = ["networkmanager" "wheel"];
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";

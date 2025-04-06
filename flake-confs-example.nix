@@ -1,7 +1,7 @@
 {
   user = {
-    name = "carl";
-    description = "Carl";
+    name = "nixos";
+    description = "Default NixOS User";
   };
   hostname = "nixos";
   buildname = "carlOS";

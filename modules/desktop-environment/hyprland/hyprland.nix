@@ -4,6 +4,7 @@
   config,
   flake-confs,
   pkgs,
+  carlOS-lib,
   ...
 }: let
   cfg = config.nixosModules.hyprland;
@@ -65,7 +66,7 @@ in {
           force = true;
         };
         "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
-        "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib flake-confs;};
+        "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib carlOS-lib flake-confs;};
         "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
         "rofi/carlOS-theme.rasi".text = import ./rofi-carlOS-theme.rasi.nix {inherit config;};
       };

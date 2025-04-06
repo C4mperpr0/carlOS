@@ -1,13 +1,13 @@
 {
   flake-confs,
+  carlOS-lib,
   ...
 }: let
-  carlOS-lib = import ../../../lib;
   confs = carlOS-lib.check-flake-conf flake-confs "modules.hyprland.hypridle" {
-     display-dimm-after = 240;
-   display-off-after = 270;
-   lock-after = 300;
-   sleep-after = 315;
+    display-dimm-after = 240;
+    display-off-after = 270;
+    lock-after = 300;
+    sleep-after = 315;
   };
 in
   # https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/
