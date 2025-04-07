@@ -1,3 +1,3 @@
 {
-  check-flake-conf = import ./check-flake-conf.nix;
+  getNestedAttr = import ./getNestedAttr.nix;
 }
