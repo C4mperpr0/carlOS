@@ -5,10 +5,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.nixos-basics;
+  cfg = config.nixosModules.carlOS.nixos-basics;
 in {
   options = {
-    nixosModules.nixos-basics = {
+    nixosModules.carlOS.nixos-basics = {
       enable = lib.mkEnableOption "enable basic nixos configurations";
       home-manager.enable = lib.mkEnableOption "enable basic home-manager config";
       gc.enable = lib.mkEnableOption "enable nixos gc";

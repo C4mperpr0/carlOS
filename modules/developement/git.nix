@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.git;
+  cfg = config.nixosModules.carlOS.developement.git;
 in {
   options = {
-    nixosModules.git = {
+    nixosModules.carlOS.developement.git = {
       enable = lib.mkEnableOption "enable git config";
     };
   };
@@ -16,7 +16,6 @@ in {
       meld
     ];
 
-    #home-manager.users."${flake-confs.user.name}" = {
     programs.git = {
       enable = true;
       config = {
@@ -33,9 +32,6 @@ in {
         diff.tool = "meld";
         difftool.meld.cmd = "meld '$LOCAL $REMOTE'";
       };
-      #extraConfig = {
-      #};
     };
-    #};
   };
 }

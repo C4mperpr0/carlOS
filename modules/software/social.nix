@@ -5,10 +5,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.social;
+  cfg = config.nixosModules.carlOS.software.social;
 in {
   options = {
-    nixosModules.social = {
+    nixosModules.carlOS.software.social = {
       enable = lib.mkEnableOption "enable social programs";
     };
   };

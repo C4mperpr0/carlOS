@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.programming;
+  cfg = config.nixosModules.carlOS.developement.programming;
 in {
   options = {
-    nixosModules.programming = {
+    nixosModules.carlOS.developement.programming = {
       enable = lib.mkEnableOption "enable programming programs";
       game-development.enable = lib.mkEnableOption "enable game-development";
       virtualization.enable = lib.mkEnableOption "enable virtualization";

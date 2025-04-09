@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.office;
+  cfg = config.nixosModules.carlOS.software.office;
 in {
   options = {
-    nixosModules.office = {
+    nixosModules.carlOS.software.office = {
       enable = lib.mkEnableOption "enable office programs";
       latex.enable = lib.mkEnableOption "enable latex";
     };

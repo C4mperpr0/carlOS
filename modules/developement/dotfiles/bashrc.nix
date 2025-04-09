@@ -6,7 +6,7 @@ buildName: userName:
       # nix commands (make it not depend on host!)
       alias update="nh os switch -H ${buildName}"
       alias upgrade="nh os switch --update -H ${buildName}"
-      alias devupdate="cd /home/carl/Documents/git/carlOS-hosts/ && nix flake update carlOS && nh os switch . --hostname ${buildName} && cd -"
+      alias devupdate="cd /home/carl/Documents/git/carlOS-hosts/ && nix flake update carlOS && cd - && nh os switch --hostname ${buildName}"
 
       # program aliases
       alias cd="z"

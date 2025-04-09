@@ -1,16 +1,13 @@
 {
   lib,
   pkgs,
-  flake-confs,
-  pkgs-unstable,
-  inputs,
   config,
   ...
 }: let
-  cfg = config.nixosModules.media;
+  cfg = config.nixosModules.carlOS.software.media;
 in {
   options = {
-    nixosModules.media = {
+    nixosModules.carlOS.software.media = {
       enable = lib.mkEnableOption "enable media programs";
       modeling.enable = lib.mkEnableOption "enable modeling";
       videoEditing.enable = lib.mkEnableOption "enable videoEditing";
@@ -37,12 +34,12 @@ in {
       [
         davinci-resolve
       ];
-#    home-manager.users.${flake-confs.userName}.lib.homeManagerConfigurations = {
-#      inherit pkgs;
-#      extraSpeicialArgs = {spicetify = inputs.spicetify-nix;};
-#      modules = [
-#        ./spicetify.nix
-#      ];
-#    };
+    #    home-manager.users.${flake-confs.userName}.lib.homeManagerConfigurations = {
+    #      inherit pkgs;
+    #      extraSpeicialArgs = {spicetify = inputs.spicetify-nix;};
+    #      modules = [
+    #        ./spicetify.nix
+    #      ];
+    #    };
   };
 }

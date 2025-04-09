@@ -1,14 +1,13 @@
 {
   lib,
   pkgs,
-  flake-confs,
   config,
   ...
 }: let
-  cfg = config.nixosModules.plymouth;
+  cfg = config.nixosModules.carlOS.plymouth;
 in {
   options = {
-    nixosModules.plymouth = {
+    nixosModules.carlOS.plymouth = {
       enable = lib.mkEnableOption "enable plymouth splash screen";
     };
   };

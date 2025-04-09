@@ -5,10 +5,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.ui-utils;
+  cfg = config.nixosModules.carlOS.software.ui-utils;
 in {
   options = {
-    nixosModules.ui-utils = {
+    nixosModules.carlOS.software.ui-utils = {
       enable = lib.mkEnableOption "enable ui-utils programs";
     };
   };

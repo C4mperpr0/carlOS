@@ -5,10 +5,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.gaming;
+  cfg = config.nixosModules.carlOS.software.gaming;
 in {
   options = {
-    nixosModules.gaming = {
+    nixosModules.carlOS.software.gaming = {
       enable = lib.mkEnableOption "enable gaming programs";
     };
   };

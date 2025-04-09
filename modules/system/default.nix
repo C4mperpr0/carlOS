@@ -4,6 +4,5 @@
     ./nixos-basics.nix
     #./minegrub.nix  
     ./plymouth.nix
-    ./german.nix
   ];
 }

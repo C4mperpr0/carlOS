@@ -1,14 +1,12 @@
 {
-  flake-confs,
-  carlOS-lib,
   lib,
   config,
   ...
 }: let
-  cfg = config.nixosModules.german;
+  cfg = config.nixosModules.carlOS.presets.language.german;
 in {
   options = {
-    nixosModules.german = {
+    nixosModules.carlOS.presets.language.german = {
       enable = lib.mkEnableOption "set german language, keyboard and locales";
     };
   };

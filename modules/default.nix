@@ -20,6 +20,7 @@ in {
     ./desktop-environment
     ./developement
     ./software
+    ./presets
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
     inputs.nix-index-database.nixosModules.nix-index

@@ -1,14 +1,12 @@
 {
   lib,
-  pkgs,
-  flake-confs,
   config,
   ...
 }: let
-  cfg = config.nixosModules.programming;
+  cfg = config.nixosModules.carlOS.developement.programming;
 in {
   options = {
-    nixosModules.ollama = {
+    nixosModules.carlOS.developement.ollama = {
       enable = lib.mkEnableOption "enable ollama service and setup";
     };
   };

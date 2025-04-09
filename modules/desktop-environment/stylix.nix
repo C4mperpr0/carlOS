@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.stylix;
+  cfg = config.nixosModules.carlOS.desktop-environment.stylix;
 in {
   options = {
-    nixosModules.stylix = {
+    nixosModules.carlOS.desktop-environment.stylix = {
       enable = lib.mkEnableOption "enable ricing with stylix";
     };
   };

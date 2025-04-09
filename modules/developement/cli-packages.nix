@@ -8,10 +8,10 @@
   self,
   ...
 }: let
-  cfg = config.nixosModules.cli-packages;
+  cfg = config.nixosModules.carlOS.developement.cli-packages;
 in {
   options = {
-    nixosModules.cli-packages = {
+    nixosModules.carlOS.developement.cli-packages = {
       enable = lib.mkEnableOption "enable cli-packages programs";
     };
   };

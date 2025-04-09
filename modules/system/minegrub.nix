@@ -1,13 +1,12 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
-  cfg = config.nixosModules.minegrub;
+  cfg = config.nixosModules.carlOS.minegrub;
 in {
   options = {
-    nixosModules.minegrub = {
+    nixosModules.carlOS.minegrub = {
       enable = lib.mkEnableOption "enable programming minegrub";
     };
   };

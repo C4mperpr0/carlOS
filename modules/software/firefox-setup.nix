@@ -2,15 +2,14 @@
   lib,
   pkgs,
   flake-confs,
-  pkgs-unstable,
   inputs,
   config,
   ...
 }: let
-  cfg = config.nixosModules.firefox-setup;
+  cfg = config.nixosModules.carlOS.software.firefox-setup;
 in {
   options = {
-    nixosModules.firefox-setup = {
+    nixosModules.carlOS.software.firefox-setup = {
       enable = lib.mkEnableOption "enable firefox setup";
     };
   };

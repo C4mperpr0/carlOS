@@ -42,8 +42,8 @@ in {
 
     services.hypridle.enable = true;
 
-    nixosModules.stylix.enable = true;
-    nixosModules.greetd.enable = false;
+    #nixosModules.stylix.enable = true;
+    #nixosModules.greetd.enable = false;
 
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       networkmanagerapplet
