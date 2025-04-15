@@ -26,6 +26,7 @@ in {
           ps = "push";
           pl = "pull";
         };
+        push.autoSetupRemote = true;
         commit.verbose = true;
         merge.tool = "vimdiff";
         mergetool.vimdiff.trustExitCode = "false";
