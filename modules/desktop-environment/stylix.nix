@@ -53,7 +53,6 @@ in {
           autoEnable = true;
           targets = {
             neovim.enable = false;
-            dunst.enable = true; # not working somehow
           };
         };
       }
