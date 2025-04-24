@@ -18,14 +18,15 @@ in {
   config = lib.mkIf cfg.enable {
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
 
-    services.xserver.enable = true;
-
-    services.logind = {
-      powerKey = "ignore";
-      powerKeyLongPress = "poweroff";
+    services = {
+      xserver.enable = true;
+      logind = {
+        powerKey = "ignore";
+        powerKeyLongPress = "poweroff";
+      };
+      power-profiles-daemon.enable = true;
+      hypridle.enable = true;
     };
-
-    services.power-profiles-daemon.enable = true;
 
     # try to fix kde-connect remote input
     xdg.portal.enable = true;
@@ -40,9 +41,6 @@ in {
       hyprlock.enable = true;
     };
 
-    services.hypridle.enable = true;
-
-    #nixosModules.stylix.enable = true;
     #nixosModules.greetd.enable = false;
 
     users.users.${flake-confs.user.name}.packages = with pkgs; [
@@ -72,6 +70,7 @@ in {
       };
 
       imports = [inputs.ags.homeManagerModules.default];
+      services.dunst.enable = true;
       programs = {
         waybar = {
           enable = true;
@@ -117,7 +116,6 @@ in {
           libnotify
           tofi
           pavucontrol # for controlling pulse audio graphically
-          dunst # for notifications
           wl-screenrec # TODO: make this work to replace wf-recorder
           wf-recorder
           wdisplays # display setup util

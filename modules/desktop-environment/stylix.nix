@@ -35,7 +35,7 @@ in {
         base0B = "#80bf40"; # strings, inherited class, markup code, diff inserted
         base0C = "#40bfbf"; # support, regex, escape chars, markup quotes
         base0D = "#407fbf"; # functions, methods, attribute IDs, headings
-        base0E = "#7f40bf"; # keywords, storage, selector, markup italic, diff changed
+        base0E = "#a00000"; # keywords, storage, selector, markup italic, diff changed
         base0F = "#bf40bf"; # deprecated, opening/closing embedded language tags
       };
 
@@ -53,7 +53,7 @@ in {
           autoEnable = true;
           targets = {
             neovim.enable = false;
-            dunst.enable = true;
+            dunst.enable = true; # not working somehow
           };
         };
       }

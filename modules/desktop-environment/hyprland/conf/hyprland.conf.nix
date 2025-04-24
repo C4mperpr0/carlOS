@@ -14,7 +14,7 @@ ${builtins.readFile ./startup.conf}
 ${builtins.readFile ./basic.conf}
 
 ##### design #####
-${builtins.readFile ./design.conf}
+${import ./design.nix {inherit config;}}
 
 ##### monitor #####
 ${builtins.readFile ./monitor.conf}
@@ -29,9 +29,6 @@ ${builtins.readFile ./window-manager.conf}
 ${import ./binds.nix {inherit config;}}
 
 ##### window rules #####
-# general design
-${builtins.readFile ./design.conf}
-
 ## special window rules
 ${builtins.readFile ./special_window_rules.conf}
 
