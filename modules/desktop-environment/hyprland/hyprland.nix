@@ -30,10 +30,10 @@ in {
 
     # try to fix kde-connect remote input
     xdg.portal.enable = true;
-    #xdg.portal.extraPortals = with pkgs; [
-    #  xdg-dekstop-portal-gtk
-    #  xdg-dekstop-portal-kde
-    #];
+    xdg.portal.extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-kde
+    ];
     xdg.portal.wlr.enable = true;
 
     programs = {
@@ -111,6 +111,7 @@ in {
       home.packages = with pkgs;
         [
           hyprpaper
+          hyprland-monitor-attached
           kdePackages.qtwayland
           brightnessctl
           libnotify

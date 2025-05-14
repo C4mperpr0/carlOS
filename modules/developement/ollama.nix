@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs-unstable,
   ...
 }: let
   cfg = config.nixosModules.carlOS.developement.programming;
@@ -14,6 +15,7 @@ in {
     services = {
       ollama = {
         enable = true;
+        package = pkgs-unstable.ollama;
         environmentVariables = {
           OLLAMA_NUM_THREADS = "20";
           OLLAMA_NUM_THREAD = "20";
@@ -21,6 +23,7 @@ in {
       };
       open-webui = {
         enable = true;
+        package = pkgs-unstable.open-webui;
         port = 3030;
       };
     };

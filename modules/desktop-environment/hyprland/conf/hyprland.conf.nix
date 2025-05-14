@@ -8,7 +8,7 @@ in ''
 source = ./test.conf # needs to be first to override others
 
 ##### startup #####
-${builtins.readFile ./startup.conf}
+${import ./startup.nix}
 
 ##### basic hyprland variables
 ${builtins.readFile ./basic.conf}
