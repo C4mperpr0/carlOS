@@ -4,18 +4,20 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.carlOS.developement.programming;
+  cfg = config.nixosModules.carlOS.development.programming;
 in {
   options = {
-    nixosModules.carlOS.developement.programming = {
+    nixosModules.carlOS.development.programming = {
       enable = lib.mkEnableOption "enable programming programs";
       game-development.enable = lib.mkEnableOption "enable game-development";
       virtualization.enable = lib.mkEnableOption "enable virtualization";
       basic-languages.enable = lib.mkEnableOption "enable basic-languages";
+      android.enable = lib.mkEnableOption "enable android development tools";
     };
   };
   config = lib.mkIf cfg.enable {
     programs.direnv.enable = true; # for nix dev-shells
+    pkgs.config.android_sdk.accept_license = true;
     environment.systemPackages = with pkgs;
       [
         vscodium
@@ -54,6 +56,9 @@ in {
         gcc
         gnumake
         rustc
+      ]
+      ++ lib.optionals cfg.android.enable [
+        android-studio
       ];
   };
 }

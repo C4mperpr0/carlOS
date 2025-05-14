@@ -18,7 +18,7 @@ in {
   modules = [
     ./system
     ./desktop-environment
-    ./developement
+    ./development
     ./software
     ./presets
     inputs.home-manager.nixosModules.home-manager

@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.nixosModules.carlOS.developement.git;
+  cfg = config.nixosModules.carlOS.development.git;
 in {
   options = {
-    nixosModules.carlOS.developement.git = {
+    nixosModules.carlOS.development.git = {
       enable = lib.mkEnableOption "enable git config";
     };
   };

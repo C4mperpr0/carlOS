@@ -4,10 +4,10 @@
   pkgs-unstable,
   ...
 }: let
-  cfg = config.nixosModules.carlOS.developement.programming;
+  cfg = config.nixosModules.carlOS.development.programming;
 in {
   options = {
-    nixosModules.carlOS.developement.ollama = {
+    nixosModules.carlOS.development.ollama = {
       enable = lib.mkEnableOption "enable ollama service and setup";
     };
   };
