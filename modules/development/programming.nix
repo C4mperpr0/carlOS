@@ -16,8 +16,8 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    nixpkgs.config.android_sdk.accept_license = true;
     programs.direnv.enable = true; # for nix dev-shells
-    pkgs.config.android_sdk.accept_license = true;
     environment.systemPackages = with pkgs;
       [
         vscodium
@@ -58,6 +58,7 @@ in {
         rustc
       ]
       ++ lib.optionals cfg.android.enable [
+        flutter
         android-studio
       ];
   };

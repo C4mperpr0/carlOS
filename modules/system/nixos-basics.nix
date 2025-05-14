@@ -28,6 +28,11 @@ in {
         # naming in grub
         system.nixos.tags = ["CarlOS:${flake-confs.buildname}"];
 
+        # set nixpkgs config
+        nixpkgs.config = {
+          allowUnfree = true;
+        };
+
         # enable all required experimental-features
         nix = {
           settings = {
