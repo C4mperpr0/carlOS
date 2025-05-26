@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-unstable,
   config,
   ...
 }: let
@@ -16,7 +17,9 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    nixpkgs.config.android_sdk.accept_license = true;
+    nixpkgs.config = {
+      android_sdk.accept_license = true;
+    };
     programs.direnv.enable = true; # for nix dev-shells
     environment.systemPackages = with pkgs;
       [
@@ -38,6 +41,7 @@ in {
             simple-term-menu
             psycopg2
             pygobject3
+            pymongo
           ]))
       ]
       ++ lib.optionals cfg.game-development.enable [
@@ -60,6 +64,9 @@ in {
       ++ lib.optionals cfg.android.enable [
         flutter
         android-studio
+        #androidsdk
+        gtk3
+        graphite2
       ];
   };
 }
