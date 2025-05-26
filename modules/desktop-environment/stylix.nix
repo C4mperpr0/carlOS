@@ -42,9 +42,13 @@ in {
       cursor = {
         package = pkgs.vimix-cursors;
         name = "Vimix-cursors";
+        size = 16;
       };
-      
-      targets.plymouth.enable = false;
+
+      targets = {
+        plymouth.enable = false;
+        #firefox.profileNames = ["default"]; # TODO: this should exist and fix a warning, but it does not. Fix later...
+      };
     };
 
     home-manager.sharedModules = [

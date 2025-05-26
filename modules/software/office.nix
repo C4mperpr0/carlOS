@@ -35,17 +35,17 @@ in {
         kdePackages.konsole
         kdePackages.dolphin
         kdePackages.qt6ct # for theming dolphin
+        kdePackages.kate
+        kdePackages.okular
         #pkgs-unstable.obsidian
         obsidian
-        kate
-        okular
         thunderbird
         libreoffice
         bitwarden
         wacomtablet
         speedcrunch
-        linuxKernel.packages.linux_6_1.v4l2loopback
-        android-tools
+        linuxKernel.packages.linux_6_1.v4l2loopback # TODO: what was this used for again?
+        android-tools # TODO: what does this do here?
       ]
       ++ lib.optionals cfg.latex.enable
       [

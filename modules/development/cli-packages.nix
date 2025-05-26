@@ -40,7 +40,11 @@ in {
       tealdeer # compact man pages
     ];
 
-    fonts.packages = with pkgs; [nerdfonts monocraft];
+    fonts.packages = with pkgs;
+      [
+        monocraft
+      ]
+      ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     environment.systemPackages = with pkgs; [
       git

@@ -52,7 +52,6 @@ in {
         qemu_full
         qtemu # qt-UI for qemu
         quickemu # automatically fetch ISOs and generate VMs
-        anbox # android emulation
         winePackages.stableFull # wine is not an emulator
         winetricks
       ]

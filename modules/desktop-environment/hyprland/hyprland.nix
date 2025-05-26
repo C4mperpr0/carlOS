@@ -32,7 +32,7 @@ in {
     xdg.portal.enable = true;
     xdg.portal.extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-kde
+      kdePackages.xdg-desktop-portal-kde
     ];
     xdg.portal.wlr.enable = true;
 
@@ -128,9 +128,6 @@ in {
           rofi-power-menu
           wl-clipboard
           cliphist
-
-          xdg-desktop-portal-gtk
-          xdg-desktop-portal-kde
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };

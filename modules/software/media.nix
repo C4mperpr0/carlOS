@@ -17,7 +17,7 @@ in {
     environment.systemPackages = with pkgs;
       [
         vlc
-        okular
+        kdePackages.okular
         ffmpeg-full
         spotify
         #spicetify-cli

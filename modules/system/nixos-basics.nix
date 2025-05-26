@@ -86,13 +86,15 @@ in {
     (
       lib.mkIf cfg.soundserver.enable {
         # Enable sound with pipewire.
-        hardware.pulseaudio.enable = false;
         security.rtkit.enable = true;
-        services.pipewire = {
-          enable = true;
-          alsa.enable = true;
-          alsa.support32Bit = true;
-          pulse.enable = true;
+        services = {
+          pulseaudio.enable = false; # TODO: where is the difference between this and pipewire.pulse?
+          pipewire = {
+            enable = true;
+            alsa.enable = true;
+            alsa.support32Bit = true;
+            pulse.enable = true;
+          };
         };
       }
     )

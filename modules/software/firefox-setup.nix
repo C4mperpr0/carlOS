@@ -48,10 +48,10 @@ in {
               };
             };
             force = true;
-            default = "DuckDuckGo";
-            order = ["DuckDuckGo" "Nix Packages" "Google"];
+            default = "ddg";
+            order = ["ddg" "np" "gg"];
           };
-          extensions = with inputs.firefox-addons.packages."${flake-confs.system}"; [
+          extensions.packages = with inputs.firefox-addons.packages."${flake-confs.system}"; [
             bitwarden
             ublock-origin
             sponsorblock
@@ -61,7 +61,6 @@ in {
             plasma-integration
             localcdn
             ### Bionic reader is still missing from rycee :(
-            #tree-style-tab
             #dictionary-german-2.1
             #tridactyl
           ];
