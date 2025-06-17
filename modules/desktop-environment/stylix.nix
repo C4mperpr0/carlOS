@@ -42,7 +42,7 @@ in {
       cursor = {
         package = pkgs.vimix-cursors;
         name = "Vimix-cursors";
-        size = 16;
+        size = 12;
       };
 
       targets = {
