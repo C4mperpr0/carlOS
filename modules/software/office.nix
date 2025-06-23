@@ -54,7 +54,7 @@ in {
         jabref
         texstudio
       ]
-      ++ lib.optionals cfg.latex.enable
+      ++ lib.optionals cfg.typst.enable
       [
         typst
       ];
