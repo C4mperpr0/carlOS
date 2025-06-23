@@ -10,6 +10,7 @@ in {
     nixosModules.carlOS.software.office = {
       enable = lib.mkEnableOption "enable office programs";
       latex.enable = lib.mkEnableOption "enable latex";
+      typst.enable = lib.mkEnableOption "enable typst";
     };
   };
   config = lib.mkIf cfg.enable {
@@ -52,6 +53,10 @@ in {
         texliveFull
         jabref
         texstudio
+      ]
+      ++ lib.optionals cfg.latex.enable
+      [
+        typst
       ];
   };
 }
