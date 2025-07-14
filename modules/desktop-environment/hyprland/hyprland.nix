@@ -88,7 +88,7 @@ in {
               cava
               apps
               notifd
-              gjs
+              #gjs
               io
               hyprland
               mpris
