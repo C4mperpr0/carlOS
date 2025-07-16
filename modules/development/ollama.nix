@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   pkgs-unstable,
   ...
 }: let
@@ -23,7 +24,7 @@ in {
       };
       open-webui = {
         enable = true;
-        package = pkgs-unstable.open-webui;
+        package = pkgs.open-webui;
         port = 3030;
       };
     };
