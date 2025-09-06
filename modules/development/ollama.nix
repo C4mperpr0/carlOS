@@ -4,7 +4,7 @@
   pkgs-unstable,
   ...
 }: let
-  cfg = config.nixosModules.carlOS.development.programming;
+  cfg = config.nixosModules.carlOS.development.ollama;
 in {
   options = {
     nixosModules.carlOS.development.ollama = {
