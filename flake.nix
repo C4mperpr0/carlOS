@@ -5,7 +5,11 @@
     ### nixpkgs and home-manager
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager?ref=release-25.05";
+    home-manager = {
+      #url = "github:nix-community/home-manager?ref=release-25.05";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ### misc
     # Aylur's GTK Shell
