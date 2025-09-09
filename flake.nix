@@ -34,7 +34,6 @@
       url = "gitlab:dr0med4r/nvim-nixos";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "nixpkgs";
       };
     };
     nix-index-database = {
