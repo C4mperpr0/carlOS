@@ -37,7 +37,7 @@ in {
         nix = {
           settings = {
             experimental-features = ["nix-command" "flakes" "pipe-operators"];
-            auto-optimise-store = true;
+            #auto-optimise-store = true; # DID IT OPTIMISE ITSELF AWAY THIS TIME?
           };
         };
       }
@@ -73,7 +73,7 @@ in {
           # home-manager
           backupFileExtension = "hm-bak";
           extraSpecialArgs = {
-            unstable = pkgs;
+            unstable = pkgs; # TODO: is this the cause of the mismatched version?
             username = flake-confs.user.name;
             hostname = flake-confs.hostname;
           };

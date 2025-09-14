@@ -1,13 +1,12 @@
 {
-  description = "The official Carl Operation System! Yes, the one Carl is using!";
+  description = "The official Carl Operation System! Yes, the one Carl is using and Dromedar is fixing!";
 
   inputs = {
     ### nixpkgs and home-manager
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-      #url = "github:nix-community/home-manager?ref=release-25.05";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,9 +21,14 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # needed for stylix
+    base16 = {
+      url = "github:SenchoPens/base16.nix";
+    };
     stylix = {
       url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.base16.follows = "base16";
     };
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
@@ -35,7 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dromedar-nvim = {
-      url = "gitlab:dr0med4r/nvim-nixos?ref=e42056836b2f96882b20f5a27c7d7e8399e1a3bf";
+      url = "gitlab:dr0med4r/nvim-nixos";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
