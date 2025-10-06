@@ -14,13 +14,12 @@ in {
   config = lib.mkIf cfg.enable {
     stylix = {
       enable = true;
-      #image = import ./hyprland/hyprpaper.nix {inherit lib;};
       image = ./assets/red_black_shapes_lines_abstraction_4k_hd_abstract-3840x2160.jpg;
 
       base16Scheme = {
         slug = "Black-Red";
-        scheme = "Black-Red by CHB";
-        author = "Carl Heinrich Bellgardt";
+        scheme = "Black-Red";
+        author = "C4mperpr0";
         base00 = "#000000"; # default background
         base01 = "#332222"; # lighter background (status bars, line numbers, folding marks)
         base02 = "#552626"; # selection background
@@ -47,7 +46,7 @@ in {
 
       targets = {
         plymouth.enable = false;
-        #firefox.profileNames = ["default"]; # TODO: this should exist and fix a warning, but it does not. Fix later...
+        #firefox = {enable=true;profileNames = ["default"]; # TODO: this should exist and fix a warning, but it does not. Fix later...
       };
     };
 
