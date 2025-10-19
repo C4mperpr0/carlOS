@@ -29,6 +29,7 @@ in {
         hoppscotch # debugging http requests
         arduino
         nixos-firewall-tool
+        pkgs-unstable.ethersync
         (python3.withPackages (ps:
           with ps; [
             requests

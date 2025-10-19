@@ -120,14 +120,20 @@ in {
           wl-screenrec # TODO: make this work to replace wf-recorder
           wf-recorder
           wdisplays # display setup util
-          rofi-rbw-wayland # bitwarden rofi GUI
           rbw
           pinentry-all # maybe not all are needed
           wtype
+          cliphist
+          wl-clipboard
+
+          # rofi menues
           rofi
           rofi-power-menu
-          wl-clipboard
-          cliphist
+          rofi-rbw-wayland # bitwarden rofi
+          rofi-pulse-select # pulse sink/source select
+          rofi-network-manager # rofi nm
+          rofi-bluetooth # rofi bluetooth connection management using nm
+          fuzzel # application launcher
         ]
         ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
