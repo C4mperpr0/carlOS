@@ -137,16 +137,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1754434187,
-        "narHash": "sha256-7EXi1wKVhIJ+j7Irrp1LMga/1OJhYGVwYaVIhWgnEk8=",
+        "lastModified": 1761172328,
+        "narHash": "sha256-s4cWeCmkxEj2PbW4udeKiyYwnFNMC+g0WBFvRCkG0I4=",
         "owner": "dr0med4r",
         "repo": "nvim-nixos",
-        "rev": "4e7c6334cffdde8a61c11622cadd83fbae76a3ce",
+        "rev": "0e8800db464bf653032efa117a326df808acd933",
         "type": "gitlab"
       },
       "original": {
         "owner": "dr0med4r",
-        "ref": "4e7c6334cffdde8a61c11622cadd83fbae76a3ce",
         "repo": "nvim-nixos",
         "type": "gitlab"
       }
