@@ -27,8 +27,13 @@ in {
     };
 
     boot = {
+      # TODO: alternative this should also work:
+      # programs.obs-studio.enableVirtualCamera
+      # this is also needed for wifi-qr (in office programs?!)
       kernelModules = ["v4l2loopback"]; # for droidcam
-      extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+      extraModulePackages = with config.boot.kernelPackages; [
+        v4l2loopback
+      ];
     };
     environment.systemPackages = with pkgs;
       [
@@ -38,14 +43,12 @@ in {
         kdePackages.qt6ct # for theming dolphin
         kdePackages.kate
         kdePackages.okular
-        #pkgs-unstable.obsidian
         obsidian
         thunderbird
         libreoffice
         bitwarden
         wacomtablet
         speedcrunch
-        linuxKernel.packages.linux_6_1.v4l2loopback # TODO: what was this used for again?
         android-tools # TODO: what does this do here?
       ]
       ++ lib.optionals cfg.latex.enable
