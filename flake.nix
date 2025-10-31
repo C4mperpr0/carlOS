@@ -39,7 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dromedar-nvim = {
-      url = "gitlab:dr0med4r/nvim-nixos";
+      url = "gitlab:dr0med4r/nvim-nixos?ref=4e7c6334cffdde8a61c11622cadd83fbae76a3ce";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
