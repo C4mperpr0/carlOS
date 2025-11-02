@@ -29,12 +29,13 @@ in {
     };
 
     # try to fix kde-connect remote input
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
-    ];
-    xdg.portal.wlr.enable = true;
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        kdePackages.xdg-desktop-portal-kde
+      ];
+      config.hyprland.default = ["hyprland" "kde"];
+    };
 
     programs = {
       hyprland.enable = true;
