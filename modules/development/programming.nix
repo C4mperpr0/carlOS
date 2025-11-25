@@ -3,6 +3,7 @@
   pkgs,
   pkgs-unstable,
   config,
+  flake-confs,
   ...
 }: let
   cfg = config.nixosModules.carlOS.development.programming;
@@ -20,6 +21,18 @@ in {
     nixpkgs.config = {
       android_sdk.accept_license = true;
     };
+
+    # for quickemu VMs display and USB
+    # TODO: only do this when virtualization is enabled
+    services.spice-vdagentd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
+
+    # make nibo work
+    # TODO: make own docker and tty/com stuff
+    users.users.${flake-confs.user.name} = {
+      extraGroups = ["docker" "dialout" "tty" "input"];
+    };
+
     programs.direnv.enable = true; # for nix dev-shells
     environment.systemPackages = with pkgs;
       [
@@ -29,7 +42,6 @@ in {
         hoppscotch # debugging http requests
         arduino
         nixos-firewall-tool
-        pkgs-unstable.ethersync
         (python3.withPackages (ps:
           with ps; [
             requests

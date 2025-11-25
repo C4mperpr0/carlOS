@@ -60,6 +60,10 @@ in {
       ++ lib.optionals cfg.typst.enable
       [
         typst
+        bun # for https://github.com/mkpoli/tyler
+        nodejs # for https://github.com/mkpoli/tyler
+        # pandoc
+        # showman
       ];
   };
 }
