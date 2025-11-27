@@ -48,6 +48,12 @@ in {
       networkmanagerapplet
     ];
 
+    # fix kde picker in hyprland issue
+    environment.etc = {
+      # https://discuss.kde.org/t/dolphin-doesnt-show-a-single-app-in-the-open-with-menu/14799
+      "xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+    };
+
     #homeConfigurations."${flake-confs.user.name}" = home-manager.lib.homeManagerConfiguration {
     #  modules = [../ags/home.nix];
     #};
