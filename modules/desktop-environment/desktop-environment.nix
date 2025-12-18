@@ -42,7 +42,7 @@ in {
       })
 
       (lib.mkIf cfg.gnome.enable {
-        services.xserver = {
+        services = {
           displayManager.gdm.enable = true;
           desktopManager.gnome.enable = true;
         };

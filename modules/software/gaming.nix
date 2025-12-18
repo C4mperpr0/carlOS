@@ -17,7 +17,7 @@ in {
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       vesktop
       superTuxKart
-      nxengine-evo
+      # nxengine-evo # won't compile :(
       oneko  # very important!
       linuxwave  # music for racing game
     ];
@@ -25,7 +25,7 @@ in {
     # Enable networking
     networking.networkmanager.enable = true;
     networking.firewall = {
-      enable = true;
+      enable = false; # TODO: only temp
       allowedTCPPortRanges = [
         {
           from = 2757;
