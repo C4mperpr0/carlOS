@@ -5,7 +5,7 @@
   colors = config.lib.stylix.colors.withHashtag;
 in ''
 ##### Testing #####
-source = ./test.conf # needs to be first to override others
+# source = ./test.conf # needs to be first to override others
 
 ##### startup #####
 ${import ./startup.nix}

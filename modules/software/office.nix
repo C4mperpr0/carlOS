@@ -23,17 +23,17 @@ in {
 
     programs = {
       kdeconnect.enable = true;
-      droidcam.enable = true;
+      # droidcam.enable = true;
     };
 
     boot = {
       # TODO: alternative this should also work:
       # programs.obs-studio.enableVirtualCamera
       # this is also needed for wifi-qr (in office programs?!)
-      kernelModules = ["v4l2loopback"]; # for droidcam
-      extraModulePackages = with config.boot.kernelPackages; [
-        v4l2loopback
-      ];
+      # kernelModules = ["v4l2loopback"]; # for droidcam
+      # extraModulePackages = with config.boot.kernelPackages; [
+      #   v4l2loopback
+      # ];
     };
     environment.systemPackages = with pkgs;
       [
@@ -43,12 +43,13 @@ in {
         kdePackages.qt6ct # for theming dolphin
         kdePackages.kate
         kdePackages.okular
+        kdePackages.wacomtablet
         obsidian
         thunderbird
         libreoffice
-        bitwarden
-        wacomtablet
+        bitwarden-desktop
         speedcrunch
+        qalculate-gtk # TODO: replace speedcrunch with this everywhere
         android-tools # TODO: what does this do here?
       ]
       ++ lib.optionals cfg.latex.enable

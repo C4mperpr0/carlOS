@@ -15,7 +15,7 @@ in {
   config = lib.mkIf cfg.enable {
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       discord
-      whatsapp-for-linux
+      wasistlos
       signal-desktop
       spotify
       sptlrx # spotify lyrics in cli

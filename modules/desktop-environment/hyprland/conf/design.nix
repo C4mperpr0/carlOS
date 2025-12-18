@@ -1,10 +1,11 @@
 {config}: let
-  colors = config.lib.stylix.colors.withHashtag;
+  colors = config.lib.stylix.colors;
 in ''
 general {
     border_size = 1
-    col.active_border = ${colors.base05}
-    col.inactive_border = ${colors.base06} 
+    gaps_out = 10
+    col.active_border = rgb(${colors.base05})
+    col.inactive_border = rgb(${colors.base06})
     no_border_on_floating = true
     resize_on_border= true
 }
