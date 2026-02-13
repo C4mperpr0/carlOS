@@ -5,6 +5,6 @@ with lib; let
   };
 in ''
   preload = ${image}
-  wallpaper = eDP-1, ${image}
+  wallpaper = , ${image}
   ipc = false
 ''

@@ -20,12 +20,17 @@ in {
 
     services = {
       xserver.enable = true;
-      logind = {
-        powerKey = "ignore";
-        powerKeyLongPress = "poweroff";
+      logind.settings.Login = {
+        HandlePowerKey = "ignore";
+        HandlePowerKeyLongPress = "poweroff";
+        # laptop lid
+        HandleLidSwitch = "(pidof hyprlock || hyprlock --immediate-render &) && systemctl sleep";
+        HandleLidSwitchExternalPower = "(pidof hyprlock || hyprlock) & hyprctl dispatch dpms off";
+        HandleLidSwitchDocked = "ignore";
       };
       power-profiles-daemon.enable = true;
       hypridle.enable = true;
+      playerctld.enable = true; # To play/pause/skip through media
     };
 
     # try to fix kde-connect remote input
@@ -45,7 +50,34 @@ in {
     #nixosModules.greetd.enable = false;
 
     users.users.${flake-confs.user.name}.packages = with pkgs; [
+      # hyprwave # install once available for nix: https://github.com/mrlinuxdude/hyprwave_shantanubaddar
+      dmenu # TODO: dunstify is stupid but needs this for actions -_-
       networkmanagerapplet
+      wl-clipboard
+      hyprpaper
+      hyprland-monitor-attached
+      kdePackages.qtwayland
+      brightnessctl
+      libnotify
+      tofi
+      pavucontrol # for controlling pulse audio graphically
+      wl-screenrec # TODO: make this work to replace wf-recorder
+      wf-recorder
+      wdisplays # display setup util
+      rbw
+      pinentry-all # maybe not all are needed
+      wtype
+      cliphist
+      hyprshot
+
+      # rofi menues
+      rofi
+      rofi-power-menu
+      rofi-rbw-wayland # bitwarden rofi
+      rofi-pulse-select # pulse sink/source select
+      rofi-network-manager # rofi nm
+      rofi-bluetooth # rofi bluetooth connection management using nm
+      fuzzel # application launcher
     ];
 
     # fix kde picker in hyprland issue
@@ -74,10 +106,13 @@ in {
         "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib carlOS-lib flake-confs;};
         "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
         "rofi/carlOS-theme.rasi".text = import ./rofi-carlOS-theme.rasi.nix {inherit config;};
+        "dunst/dunstrc".text = import ./dunstrc.nix {inherit config;};
       };
 
+      services = {
+        dunst.enable = true;
+      };
       imports = [inputs.ags.homeManagerModules.default];
-      services.dunst.enable = true;
       programs = {
         waybar = {
           enable = true;
@@ -115,34 +150,7 @@ in {
             ]);
         };
       };
-      home.packages = with pkgs;
-        [
-          hyprpaper
-          hyprland-monitor-attached
-          kdePackages.qtwayland
-          brightnessctl
-          libnotify
-          tofi
-          pavucontrol # for controlling pulse audio graphically
-          wl-screenrec # TODO: make this work to replace wf-recorder
-          wf-recorder
-          wdisplays # display setup util
-          rbw
-          pinentry-all # maybe not all are needed
-          wtype
-          cliphist
-          wl-clipboard
-
-          # rofi menues
-          rofi
-          rofi-power-menu
-          rofi-rbw-wayland # bitwarden rofi
-          rofi-pulse-select # pulse sink/source select
-          rofi-network-manager # rofi nm
-          rofi-bluetooth # rofi bluetooth connection management using nm
-          fuzzel # application launcher
-        ]
-        ++ config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
+      home.packages = config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
   };
 }

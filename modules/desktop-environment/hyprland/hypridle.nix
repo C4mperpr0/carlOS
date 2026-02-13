@@ -32,7 +32,7 @@ in
     ${if confs.lock-after != 0 then "# lock
     listener {
       timeout = ${toString confs.lock-after}
-      on-timeout = pidof hyprlock || hyprlock
+      on-timeout = pidof hyprlock || hyprlock --grace 15
       on-resume = notify-send \"unlocked notification\";
     }" else "# Lock timer deactivated. Set modules.hyprland.hypridle.lock-after to activate it."}
 
