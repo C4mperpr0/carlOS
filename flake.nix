@@ -40,9 +40,9 @@
     };
     dromedar-nvim = {
       url = "gitlab:dr0med4r/nvim-nixos";
-      # inputs = {
-      #   nixpkgs.follows = "nixpkgs";
-      # };
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+      };
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
