@@ -5,7 +5,7 @@
     spacing = 4; # Gaps between modules (4px)
     # Choose the order of the modules
     modules-left = ["backlight" "hyprland/workspaces"];
-    modules-center = ["pulseaudio" "network" "hyprland/submap"];
+    modules-center = ["pulseaudio" "network" "network#speed" "hyprland/submap"];
     modules-right = ["cpu" "memory" "temperature" "battery" "clock" "tray"];
     # Modules configuration
     "hyprland/workspaces" = {
@@ -46,9 +46,10 @@
     cpu = {
       format = "{usage}% ";
       tooltip = false;
-      interval = 1;
+      interval = 2;
     };
     memory = {
+      interval = 10;
       format = "{}% ";
     };
     temperature = {
@@ -77,19 +78,26 @@
       format-plugged = "{capacity}% ";
       format-alt = "{time} {icon}";
       tooltip = true;
-      tooltip-format = "{power}W";
+      tooltip-format = "{power} W";
       # format-good= ""; // An empty format will hide the module
       # format-full= "";
       format-icons = ["" "" "" "" ""];
     };
     network = {
       # interface= "wlp2*"; // (Optional) To force the use of this interface
-      format-wifi = "({signalStrength}%) ";
-      format-ethernet = "Ethernet ";
-      tooltip-format = "{ifname}: {ipaddr}/{cidr}\nvia {gwaddr}";
+      format-wifi = "({signalStrength}%)  ";
+      format-ethernet = "Ethernet 󰌗";
+      tooltip-format = "{ifname}: {ipaddr}/{cidr}\nvia {gwaddr}\n{ssid} {frequency}";
       format-linked = "{ifname} (No IP)";
-      format-disconnected = " ⚠";
-      format-alt = "{essid} ({signalStrength}%) ";
+      format-disconnected = "󰖪 ";
+      format-alt = "{essid} ({signalStrength}%)  ";
+    };
+    "network#speed" = {
+      interval = 2;
+      tooltip = false;
+      format-wifi = "<small> {bandwidthUpBits}\n {bandwidthDownBits}</small>";
+      format-ethernet = "<small> {bandwidthUpBits}\n {bandwidthDownBits}</small>";
+      format-alt = "<small> {bandwidthUpBits}\n {bandwidthDownBits}</small>";
     };
     pulseaudio = {
       # scroll-step= 1; // %, can be a float
