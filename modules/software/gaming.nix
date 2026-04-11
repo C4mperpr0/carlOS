@@ -20,6 +20,7 @@ in {
       # nxengine-evo # won't compile :(
       oneko  # very important!
       linuxwave  # music for racing game
+      prismlauncher
     ];
 
     # Enable networking
