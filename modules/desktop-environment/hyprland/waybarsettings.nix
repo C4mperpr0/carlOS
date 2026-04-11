@@ -5,7 +5,7 @@
     spacing = 4; # Gaps between modules (4px)
     # Choose the order of the modules
     modules-left = ["backlight" "hyprland/workspaces"];
-    modules-center = ["pulseaudio" "network" "hyprland/submap"];
+    modules-center = ["pulseaudio" "network" "network#speed" "hyprland/submap"];
     modules-right = ["cpu" "memory" "temperature" "battery" "clock" "tray"];
     # Modules configuration
     "hyprland/workspaces" = {
@@ -16,7 +16,9 @@
       window-rewrite-default = "";
       window-rewrite = {
         "title<.*youtube.*>" = "󰗃";
-        "class<Alacritty>" = "";
+        "class<Alacritty>" = "";
+        "class<org.kde.konsole>" = "";
+        "class<org.kde.dolphin>" = "";
         "class<signal>" = "";
         "class<WebCord>" = "󰙯";
         "class<neovide>" = "";
@@ -46,9 +48,10 @@
     cpu = {
       format = "{usage}% ";
       tooltip = false;
-      interval = 1;
+      interval = 2;
     };
     memory = {
+      interval = 10;
       format = "{}% ";
     };
     temperature = {
@@ -77,22 +80,27 @@
       format-plugged = "{capacity}% ";
       format-alt = "{time} {icon}";
       tooltip = true;
-      tooltip-format = "{power}W";
-      # format-good= ""; // An empty format will hide the module
-      # format-full= "";
+      tooltip-format = "{power} W";
+      format-full= ""; # hides the module when battery is full;
       format-icons = ["" "" "" "" ""];
     };
     network = {
-      # interface= "wlp2*"; // (Optional) To force the use of this interface
-      format-wifi = "({signalStrength}%) ";
-      format-ethernet = "Ethernet ";
-      tooltip-format = "{ifname}: {ipaddr}/{cidr}\nvia {gwaddr}";
+      format-wifi = "({signalStrength}%)  ";
+      format-ethernet = "Ethernet 󰌗";
+      tooltip-format = "{ifname}: {ipaddr}/{cidr}\nvia {gwaddr}\n{ssid}"; # {frequency}";
       format-linked = "{ifname} (No IP)";
-      format-disconnected = " ⚠";
-      format-alt = "{essid} ({signalStrength}%) ";
+      format-disconnected = "󰖪 ";
+      on-click = "pkill .nm-connection- || nm-connection-editor";
+    };
+    "network#speed" = {
+      interval = 2;
+      format-wifi = "<small> {bandwidthUpBits}\n {bandwidthDownBits}</small>";
+      format-ethernet = "<small> {bandwidthUpBits}\n {bandwidthDownBits}</small>";
+      tooltip-format = "{ifname}: {ipaddr}/{cidr}\nvia {gwaddr}\n{ssid} {frequency}";
+      on-click = "pkill .nm-connection- || nm-connection-editor";
     };
     pulseaudio = {
-      # scroll-step= 1; // %, can be a float
+      scroll-step= 0.5;
       format = "{volume}% {icon} {format_source}";
       format-bluetooth = "{volume}% {icon} {format_source}";
       format-bluetooth-muted = "{icon} {format_source}";
@@ -108,7 +116,7 @@
         car = "";
         default = ["" "" "󰕾"];
       };
-      on-click = "pavucontrol";
+      on-click = "pkill pavucontrol || pavucontrol";
     };
   };
 }
