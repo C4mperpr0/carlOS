@@ -82,6 +82,7 @@ in {
           enable = true;
           flake-path = self;
           hostname = flake-confs.hostname;
+          autoSave = true;
         };
       };
     };
