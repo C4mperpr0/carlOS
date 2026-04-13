@@ -20,7 +20,8 @@ in {
       # nxengine-evo # won't compile :(
       oneko  # very important!
       linuxwave  # music for racing game
-      prismlauncher
+      prismlauncher # unofficial FOSS minecraft launcher
+      jdk25_headless # required for minecraft
     ];
 
     # Enable networking
