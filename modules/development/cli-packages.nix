@@ -80,7 +80,7 @@ in {
       programs = {
         nvim-dromedar = {
           enable = true;
-          flake-path = self;
+          flakePath = self;
           hostname = flake-confs.hostname;
           autoSave = true;
         };
