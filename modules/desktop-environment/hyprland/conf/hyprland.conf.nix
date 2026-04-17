@@ -33,7 +33,7 @@ ${import ./binds.nix {inherit config;}}
 ${builtins.readFile ./special_window_rules.conf}
 
 ##### workspaces #####
-${builtins.readFile ./workspaces.con}
+${builtins.readFile ./workspaces.conf}
 
 
 # colors example: ${config.lib.stylix.colors.base01}
