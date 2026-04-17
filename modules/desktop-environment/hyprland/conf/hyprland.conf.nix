@@ -32,16 +32,10 @@ ${import ./binds.nix {inherit config;}}
 ## special window rules
 ${builtins.readFile ./special_window_rules.conf}
 
+##### workspaces #####
+${builtins.readFile ./workspaces.con}
+
+
 # colors example: ${config.lib.stylix.colors.base01}
 
-#windowrulev2 = workspace name:Spotify, class:Spotify
-#windowrule = animation popin, tofi-drun # not working correctly yet, name not correct
-
-###### workspace rules #####
-#bind = SUPER, C, movetoworkspace, special
-#workspace = s[true], name:Shell, persistens:true, on-created-empty:exec konsole
-#workspace = s[true], name:Browsing, persistens:true
-#workspace = s[true], name:Spotify, on-created-empty:exec spotify
-# vllt spotify auf workspace spotify öffnen, aber überall anzeigen, als toogle funktion. Togglefunktion guckt dann auch ob es läuft, oder geöffnet werden muss?
-# spotify immer im Hintergrund offen halten, und solange bis Focusverlust floating in der Mitte lassen
 ''
