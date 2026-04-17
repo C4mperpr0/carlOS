@@ -17,14 +17,4 @@ bind = SUPER, O, exec, obsidian
 bind = SUPER, K, exec, kdeconnect-app
 bind = SUPER, ESCAPE, exec, btop
 bind = , key:248, exec, notify-send "Camera switch set"
-
-# media
-workspace = s[true], gapsout:50
-windowrule = workspace special:media, title:^(Spotify)$
-windowrule = workspace special:media, title:^(Signal)$
-windowrule = workspace special:media, title:^(WasIstLos)$
-#bindo = SUPER_L, SHIFT_L, togglespecialworkspace, terminal 
-bind = SUPER_L_SHIFT_L, m, exec, pgrep spotify && hyprctl dispatch togglespecialworkspace media || spotify &
-bind = SUPER_L_SHIFT_L, s, exec, hyprctl dispatch togglespecialworkspace media && signal-desktop & # TODO: it is not possible to check wethers its running already, bc it seems to only have an electron process
-bind = SUPER_L_SHIFT_L, w, exec, pgrep wasistlos && hyprctl dispatch togglespecialworkspace media || wasistlos &
 ''
