@@ -61,6 +61,7 @@ in {
     environment.systemPackages = with pkgs; [
       git
       nano
+      neovim
       pkgs-unstable.nix-inspect
       (python3.withPackages (ps:
         # xontribs for xonsh
@@ -76,11 +77,11 @@ in {
       };
     };
 
+    nixpkgs.overlays = [
+      (final: prev: {neovim = inputs.nvim-dromedar.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dromedar;})
+    ];
+
     programs = {
-      neovim = {
-        enable = true;
-        package = inputs.nvim-dromedar.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dromedar;
-      };
       nix-index-database.comma.enable = true; # comma tool for nix shell temp bin automation
       nix-index.enable = true; # integrate with shells' command-not-found
       nh = {

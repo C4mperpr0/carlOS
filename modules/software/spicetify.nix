@@ -1,6 +1,6 @@
 { pkgs, lib, spicetify-nix, ... }:
 let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = spicetify-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   # allow spotify to be installed if you don't have unfree enabled already
