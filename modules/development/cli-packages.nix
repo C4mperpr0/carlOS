@@ -71,19 +71,14 @@ in {
     ];
 
     home-manager.users.${flake-confs.user.name} = {
-      imports = [
-        inputs.dromedar-nvim.homeManagerModules.nvim
-      ];
       xdg = {
         configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix flake-confs.buildname flake-confs.user.name;
       };
-      programs = {
-        nvim-dromedar = {
-          enable = true;
-          flakePath = self;
-          hostname = flake-confs.hostname;
-          autoSave = true;
-        };
+    };
+    programs = {
+      neovim = {
+        enable = true;
+        package = inputs.nvim-dromedar.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dromedar;
       };
     };
 

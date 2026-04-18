@@ -40,7 +40,7 @@ in {
         wev # for detecting keycodes
         xdotool
         hoppscotch # debugging http requests
-        arduino
+        # arduino # re-enable after uni module
         nixos-firewall-tool
         (python3.withPackages (ps:
           with ps; [
