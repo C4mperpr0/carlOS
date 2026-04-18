@@ -75,14 +75,12 @@ in {
         configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix flake-confs.buildname flake-confs.user.name;
       };
     };
+
     programs = {
       neovim = {
         enable = true;
         package = inputs.nvim-dromedar.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dromedar;
       };
-    };
-
-    programs = {
       nix-index-database.comma.enable = true; # comma tool for nix shell temp bin automation
       nix-index.enable = true; # integrate with shells' command-not-found
       nh = {

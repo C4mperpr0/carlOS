@@ -38,7 +38,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dromedar-nvim = {
+    nvim-dromedar = { # Höcker
       url = "gitlab:dr0med4r/nvim-nixos";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
