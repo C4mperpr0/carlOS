@@ -23,14 +23,14 @@ in {
 
     programs = {
       kdeconnect.enable = true;
-      # droidcam.enable = true;
+      droidcam.enable = true;
     };
 
     boot = {
       # TODO: alternative this should also work:
       # programs.obs-studio.enableVirtualCamera
       # this is also needed for wifi-qr (in office programs?!)
-      # kernelModules = ["v4l2loopback"]; # for droidcam
+      kernelModules = ["v4l2loopback"]; # for droidcam
       # extraModulePackages = with config.boot.kernelPackages; [
       #   v4l2loopback
       # ];
