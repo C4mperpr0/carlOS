@@ -16,7 +16,7 @@ in {
     programs.steam.enable = true;
     users.users.${flake-confs.user.name}.packages = with pkgs; [
       vesktop
-      superTuxKart
+      supertuxkart
       # nxengine-evo # won't compile :(
       oneko  # very important!
       linuxwave  # music for racing game

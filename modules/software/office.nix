@@ -26,6 +26,10 @@ in {
       droidcam.enable = true;
     };
 
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-39.8.10"
+    ];
+
     boot = {
       # TODO: alternative this should also work:
       # programs.obs-studio.enableVirtualCamera

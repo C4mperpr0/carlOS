@@ -8,6 +8,11 @@
   ...
 }: let
   cfg = config.nixosModules.hyprland;
+
+  pkgsHypr54 = import inputs.nixpkgs-hypr54 {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
 in {
   options = {
     nixosModules.hyprland = {
@@ -43,7 +48,10 @@ in {
     };
 
     programs = {
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        package = pkgsHypr54.hyprland; # FIXME: until I find the time to update the whole hyprconfig
+      };
       hyprlock.enable = true;
     };
 

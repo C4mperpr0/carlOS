@@ -3,10 +3,10 @@
 
   inputs = {
     ### nixpkgs and home-manager
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager?ref=release-25.11";
+      url = "github:nix-community/home-manager?ref=release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,7 +26,7 @@
       url = "github:SenchoPens/base16.nix";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.base16.follows = "base16";
     };
@@ -38,7 +38,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvim-dromedar = { # Höcker
+    nvim-dromedar = {
+      # Höcker
       url = "gitlab:dr0med4r/nvim-nixos";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
@@ -49,6 +50,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     #minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    nixpkgs-hypr54.url = "github:NixOS/nixpkgs?ref=nixos-25.11";
   };
 
   outputs = inputs @ {...}: let

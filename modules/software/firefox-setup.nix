@@ -23,7 +23,7 @@ in {
             "browser.startup.homepage" = "https://bellgardt.dev";
             "signon.rememberSignons" = false;
             "browser.download.panel.shown" = true;
-            "layout.css.devPixelsPerPx" = -1.0; # follow system DPI to work with hyprland
+            # Might fix or create a bug: "layout.css.devPixelsPerPx" = -1.0; # follow system DPI to work with hyprland
           };
           search = {
             engines = {

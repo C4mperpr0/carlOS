@@ -29,9 +29,11 @@ in {
 
     # make nibo work
     # TODO: make own docker and tty/com stuff
+    users.groups.plugdev = {}; # needed for some uart/USB interactions
     users.users.${flake-confs.user.name} = {
-      extraGroups = ["docker" "dialout" "tty" "input"];
+      extraGroups = ["docker" "dialout" "tty" "input" "plugdev"];
     };
+    virtualisation.docker.enable = true;
 
     programs.direnv.enable = true; # for nix dev-shells
     environment.systemPackages = with pkgs;
