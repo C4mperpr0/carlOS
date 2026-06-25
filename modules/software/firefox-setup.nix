@@ -20,7 +20,7 @@ in {
         languagePacks = ["en-US" "de"];
         profiles.default = {
           settings = {
-            "browser.startup.homepage" = "https://bellgardt.dev";
+            "browser.startup.homepage" = "https://weathersalesman.github.io/GelberHurensohn/"; # while the server is being maintananced, switch to another site
             "signon.rememberSignons" = false;
             "browser.download.panel.shown" = true;
             # Might fix or create a bug: "layout.css.devPixelsPerPx" = -1.0; # follow system DPI to work with hyprland
