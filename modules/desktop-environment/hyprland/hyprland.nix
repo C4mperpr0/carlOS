@@ -8,11 +8,6 @@
   ...
 }: let
   cfg = config.nixosModules.hyprland;
-
-  pkgsHypr54 = import inputs.nixpkgs-hypr54 {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
 in {
   options = {
     nixosModules.hyprland = {
@@ -22,6 +17,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     security.pam.services."${flake-confs.user.name}".kwallet.enable = true;
+
+    # enable hyprpaper
+    nixosModules.carlOS.desktop-environment.hyprland.hyprpaper.enable = true;
 
     services = {
       xserver.enable = true;
@@ -48,10 +46,8 @@ in {
     };
 
     programs = {
-      hyprland = {
-        enable = true;
-        package = pkgsHypr54.hyprland; # FIXME: until I find the time to update the whole hyprconfig
-      };
+      hyprland.enable = true;
+      xwayland.enable = true;
       hyprlock.enable = true;
     };
 
@@ -62,7 +58,6 @@ in {
       dmenu # TODO: dunstify is stupid but needs this for actions -_-
       networkmanagerapplet
       wl-clipboard
-      hyprpaper
       hyprland-monitor-attached
       kdePackages.qtwayland
       brightnessctl
@@ -106,11 +101,10 @@ in {
     home-manager.users."${flake-confs.user.name}" = {
       #  modules = [../ags/home.nix];
       xdg.configFile = {
-        "hypr/hyprland.conf" = {
-          source = builtins.toFile "hyprland.conf" (import ./conf/hyprland.conf.nix {inherit lib config;});
+        "hypr/hyprland.lua" = {
+          source = builtins.toFile "hyprland.lua" (import ./conf/hyprland.lua.nix {inherit lib config;});
           force = true;
         };
-        "hypr/hyprpaper.conf".text = import ./hyprpaper.nix {inherit lib;};
         "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib carlOS-lib flake-confs;};
         "hypr/hyprlock.conf".text = import ./hyprlock.nix {inherit lib config;};
         "rofi/carlOS-theme.rasi".text = import ./rofi-carlOS-theme.rasi.nix {inherit config;};

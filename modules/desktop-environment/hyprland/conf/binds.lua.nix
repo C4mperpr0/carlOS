@@ -1,0 +1,19 @@
+{config, ...}: ''
+  -- general binds
+  hl.bind("XF86PowerOff", hl.dsp.exec_cmd("pkill rofi || rofi -show p -modi p:rofi-power-menu -theme carlOS-theme"))
+  hl.bind("XF86Favorites", hl.dsp.exec_cmd("echo -e \"power-saver\nbalanced\nperformance\" | grep -n \"$(powerprofilesctl get)\" | awk -F: '{print $1}' | while read i; do p=(power-saver balanced performance); n=\"''${p[$((i%3))]}\"; powerprofilesctl set \"$n\"; case \"$n\" in performance) ic=\"\";; balanced) ic=\"󰗑\";; power-saver) ic=\"󰌪\";; esac; dunstify -h string:x-dunst-stack-tag:powerprofilechanged \"$ic  Power-Mode set to $n\"; done"))
+  hl.bind("Print", hl.dsp.exec_cmd("exec, tmp=\"$(mktemp --suffix=.png)\"; hyprshot -m active -m output -r -s >\"$tmp\"; action=\"$(dunstify -a hyprshot-keybind -i \"$tmp\" -A save,Save -A open,Open \"Screenshot saved to clipboard\")\"; case \"$action\" in save) out=\"$HOME/Pictures/Screenshots/$(date '+%Y-%m-%d_%H-%M-%S').png\"; mkdir -p \"$HOME/Pictures/Screenshots/\"; mv \"$tmp\" \"$out\"; dunstify -a hyprshot-keybind \"Screenshot saved as\" \"$(basename \"$out\")\";; open) okular \"$tmp\";; *) rm \"$tmp\";; esac"))
+  hl.bind("SHIFT + Print", hl.dsp.exec_cmd("tmp=\"$(mktemp --suffix=.png)\"; hyprshot -m region --freeze -r -s >\"$tmp\"; action=\"$(dunstify -a hyprshot-keybind -i \"$tmp\" -A save,Save -A open,Open \"Screenshot saved to clipboard\")\"; case \"$action\" in save) out=\"$HOME/Pictures/Screenshots/$(date '+%Y-%m-%d_%H-%M-%S').png\"; mkdir -p \"$HOME/Pictures/Screenshots/\"; mv \"$tmp\" \"$out\"; dunstify -a hyprshot-keybind \"Screenshot saved as\" \"$(basename \"$out\")\";; open) okular \"$tmp\";; *) rm \"$tmp\";; esac\""))
+  hl.bind("SUPER + SHIFT + L", hl.dsp.exec_cmd("pkill rofi || rofi -show p -modi p:rofi-power-menu -theme carlOS-theme"))
+  hl.bind("SUPER + SUPER_L", hl.dsp.exec_cmd("pkill tofi-drun || tofi-drun --config ${builtins.toFile "tofi.conf" (import ./tofi-config.nix {inherit config;})}"), {release = true})
+  hl.bind("SUPER + period", hl.dsp.exec_cmd("pkill rofi-rbw || rofi-rbw --selector rofi --clipboarder wl-copy --typer wtype --selector-args=\"-theme carlOS-theme\""))
+  hl.bind("SUPER + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu -theme carlOS-theme | cliphist decode | wl-copy"))
+  hl.bind("SUPER + P", hl.dsp.exec_cmd("pkill wdisplays || wdisplays"))
+  hl.bind("SUPER + T", hl.dsp.exec_cmd("konsole"))
+  hl.bind("SUPER + E", hl.dsp.exec_cmd("dolphin"))
+  hl.bind("SUPER + B", hl.dsp.exec_cmd("firefox"))
+  hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
+  hl.bind("SUPER + K", hl.dsp.exec_cmd("kdeconnect-app"))
+  hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd("btop"))
+  hl.bind("mouse:248", hl.dsp.exec_cmd(""), { mouse = true })
+''
