@@ -11,6 +11,7 @@
   hl.bind("SUPER + P", hl.dsp.exec_cmd("pkill wdisplays || wdisplays"))
   hl.bind("SUPER + T", hl.dsp.exec_cmd("konsole"))
   hl.bind("SUPER + E", hl.dsp.exec_cmd("dolphin"))
+  hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("dolphin ~/Downloads/"))
   hl.bind("SUPER + B", hl.dsp.exec_cmd("firefox"))
   hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
   hl.bind("SUPER + K", hl.dsp.exec_cmd("kdeconnect-app"))

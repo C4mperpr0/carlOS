@@ -73,7 +73,9 @@ hl.bind("SHIFT + XF86AudioMute", hl.dsp.exec_cmd("playerctl play-pause"), { lock
 -- display brightness
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set +5%"), { locked = true, repeating = true })
-hl.bind("SUPER + XF86MonBrightnessDown", hl.dsp.exec_cmd("sleep 3 && hyprctl dispatch dpms off"), { locked = true })
+hl.bind("SUPER + XF86MonBrightnessDown",
+    hl.dsp.exec_cmd("dunstify 'Display off in 3s...' && sleep 3 && hyprctl dispatch 'hl.dsp.dpms({ action = 1 })'"),
+    { locked = true })
 
 -- zoom
 local MIN_ZOOM = 1

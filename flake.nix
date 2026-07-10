@@ -50,7 +50,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     #minegrub-theme.url = "github:Lxtharia/minegrub-theme";
-    nixpkgs-hypr54.url = "github:NixOS/nixpkgs?ref=nixos-25.11";
   };
 
   outputs = inputs @ {...}: let
