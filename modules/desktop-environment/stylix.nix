@@ -43,10 +43,8 @@ in {
         name = "Vimix-cursors";
         size = 12;
       };
-
       targets = {
         plymouth.enable = false;
-        #firefox = {enable=true;profileNames = ["default"]; # TODO: this should exist and fix a warning, but it does not. Fix later...
       };
     };
 
@@ -56,6 +54,10 @@ in {
           autoEnable = true;
           targets = {
             neovim.enable = false;
+            firefox = {
+              enable = true;
+              profileNames = ["default"]; # TODO: this should exist and fix a warning, but it does not. Fix later...
+            };
           };
         };
       }
