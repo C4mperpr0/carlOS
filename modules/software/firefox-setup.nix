@@ -17,6 +17,7 @@ in {
     home-manager.users.${flake-confs.user.name} = {
       programs.firefox = {
         enable = true;
+        configPath = ".mozilla/firefox"; # Legacy variant! Later switch to: configPath = "${config.xdg.configHome}/mozilla/firefox";
         languagePacks = ["en-US" "de"];
         profiles.default = {
           settings = {
@@ -61,7 +62,6 @@ in {
             plasma-integration
             localcdn
             ### Bionic reader is still missing from rycee :(
-            #dictionary-german-2.1
             #tridactyl
           ];
         };
