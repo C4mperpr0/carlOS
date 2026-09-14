@@ -72,6 +72,7 @@ in {
         home-manager = {
           # home-manager
           backupFileExtension = "hm-bak";
+          overwriteBackup = true;
           extraSpecialArgs = {
             unstable = pkgs; # TODO: is this the cause of the mismatched version?
             username = flake-confs.user.name;
