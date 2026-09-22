@@ -37,7 +37,6 @@ in {
         nix = {
           settings = {
             experimental-features = ["nix-command" "flakes" "pipe-operators"];
-            #auto-optimise-store = true; # DID IT OPTIMISE ITSELF AWAY THIS TIME?
           };
         };
       }

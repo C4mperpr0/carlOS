@@ -46,42 +46,18 @@ in {
     };
 
     programs = {
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        # plugins = [
+        # pkgs-unstable.hyprlandPlugins.hyprCapture # screenshot tool; make it stable once available; https://github.com/gfhdhytghd/HyprCapture
+        # ];
+      };
       xwayland.enable = true;
       hyprlock.enable = true;
     };
 
-    #nixosModules.greetd.enable = false;
-
-    users.users.${flake-confs.user.name}.packages = with pkgs; [
-      # hyprwave # install once available for nix: https://github.com/mrlinuxdude/hyprwave_shantanubaddar
-      dmenu # TODO: dunstify is stupid but needs this for actions -_-
-      networkmanagerapplet
-      wl-clipboard
-      hyprland-monitor-attached
-      kdePackages.qtwayland
-      brightnessctl
-      libnotify
-      tofi
-      pavucontrol # for controlling pulse audio graphically
-      wl-screenrec # TODO: make this work to replace wf-recorder
-      wf-recorder
-      wdisplays # display setup util
-      rbw
-      pinentry-all # maybe not all are needed
-      wtype
-      cliphist
-      hyprshot
-
-      # rofi menues
-      rofi
-      rofi-power-menu
-      rofi-rbw-wayland # bitwarden rofi
-      rofi-pulse-select # pulse sink/source select
-      rofi-network-manager # rofi nm
-      rofi-bluetooth # rofi bluetooth connection management using nm
-      fuzzel # application launcher
-    ];
+    # enable ilyamiro's serpantinum
+    nixosModules.serpantinumConf.enable = true;
 
     # fix kde picker in hyprland issue
     environment.etc = {
@@ -89,20 +65,42 @@ in {
       "xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
     };
 
-    #homeConfigurations."${flake-confs.user.name}" = home-manager.lib.homeManagerConfiguration {
-    #  modules = [../ags/home.nix];
-    #};
+    users.users.${flake-confs.user.name} = {
+      packages = with pkgs; [
+        # hyprwave # install once available for nix: https://github.com/mrlinuxdude/hyprwave_shantanubaddar
+        dmenu # TODO: dunstify is stupid but needs this for actions -_-
+        networkmanagerapplet
+        wl-clipboard
+        # hyprland-monitor-attached
+        kdePackages.qtwayland
+        brightnessctl
+        libnotify
+        tofi
+        pavucontrol # for controlling pulse audio graphically
+        wl-screenrec # TODO: make this work to replace wf-recorder
+        wf-recorder
+        wdisplays # display setup util
+        rbw
+        pinentry-all # maybe not all are needed
+        wtype
+        cliphist
+        hyprshot
 
-    #imports = [inputs.ags.homeManagerModules.default];
-    #programs.ags = {
-    # enable = true;
-    #};
+        # rofi menues
+        rofi
+        rofi-power-menu
+        rofi-rbw-wayland # bitwarden rofi
+        rofi-pulse-select # pulse sink/source select
+        rofi-network-manager # rofi nm
+        rofi-bluetooth # rofi bluetooth connection management using nm
+        fuzzel # application launcher
+      ];
+    };
 
     home-manager.users."${flake-confs.user.name}" = {
-      #  modules = [../ags/home.nix];
       xdg.configFile = {
         "hypr/hyprland.lua" = {
-          source = builtins.toFile "hyprland.lua" (import ./conf/hyprland.lua.nix {inherit lib config;});
+          source = builtins.toFile "hyprland.lua" (import ./conf/hyprland.lua.nix {inherit lib config inputs;});
           force = true;
         };
         "hypr/hypridle.conf".text = import ./hypridle.nix {inherit lib carlOS-lib flake-confs;};
@@ -114,45 +112,13 @@ in {
       services = {
         dunst.enable = true;
       };
-      imports = [inputs.ags.homeManagerModules.default];
+
       programs = {
         waybar = {
           enable = true;
           settings = import ./waybarsettings.nix;
         };
-        ags = {
-          enable = true;
-          configDir = ./ags;
-          extraPackages = with inputs.ags.packages.${flake-confs.system};
-            [
-              astal3
-              astal4
-              greet
-              auth
-              cava
-              apps
-              notifd
-              #gjs
-              io
-              hyprland
-              mpris
-              battery
-              wireplumber
-              network
-              bluetooth
-              tray
-              #gtksourceview
-              #webkitgtk
-              #accountsservice
-            ]
-            ++ (with pkgs; [
-              glib
-              gobject-introspection
-              gtk3
-            ]);
-        };
       };
-      home.packages = config.home-manager.users."${flake-confs.user.name}".programs.ags.extraPackages;
     };
   };
 }

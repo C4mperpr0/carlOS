@@ -11,16 +11,6 @@
     };
 
     ### misc
-    # Aylur's GTK Shell
-    ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # needed for ags
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # needed for stylix
     base16 = {
       url = "github:SenchoPens/base16.nix";
@@ -47,6 +37,10 @@
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    serpantinum = {
+      url = "github:ilyamiro/serpantinum";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     #minegrub-theme.url = "github:Lxtharia/minegrub-theme";

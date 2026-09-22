@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  inputs,
 }: let
   colors = config.lib.stylix.colors.withHashtag;
 in ''
@@ -34,6 +35,9 @@ in ''
   ----- workspaces -----
   ${builtins.readFile ./workspaces.lua}
 
+  ----- ilyamiro's serpantinum
+  ${builtins.readFile "${inputs.serpantinum}/compositors/hyprland/config/autostart.lua"}
+  ${builtins.readFile "${inputs.serpantinum}/compositors/hyprland/config/env.lua"}
 
   -- colors example: ${config.lib.stylix.colors.base01}
 ''
