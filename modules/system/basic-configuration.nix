@@ -1,6 +1,0 @@
-{
-  flake-confs,
-  carlOS-lib,
-  ...
-}: {
-}
