@@ -24,8 +24,13 @@ in {
     users.users.${flake-confs.user.name} = {
       packages = with pkgs; [
         easyeffects
+        kdePackages.kirigami
       ];
     };
+
+    environment.systemPackages = with pkgs; [
+      kdePackages.kirigami
+    ];
 
     home-manager.users."${flake-confs.user.name}" = {
       imports = [
