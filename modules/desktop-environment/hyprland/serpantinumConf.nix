@@ -16,22 +16,21 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # enable hyprpaper
-    nixosModules.carlOS.desktop-environment.hyprland.hyprpaper.enable = true;
-
+    # enable serpantinum nixos module
     programs.serpantinum.enable = true;
 
+    # required packages
     users.users.${flake-confs.user.name} = {
       packages = with pkgs; [
         easyeffects
         kdePackages.kirigami
       ];
     };
-
     environment.systemPackages = with pkgs; [
       kdePackages.kirigami
     ];
 
+    # configure serpantinum home-manager module
     home-manager.users."${flake-confs.user.name}" = {
       imports = [
         inputs.serpantinum.homeManagerModules.default
