@@ -4,5 +4,6 @@
     ./programming.nix
     ./git.nix
     ./ollama.nix
+    ./tailscale.nix
   ];
 }
