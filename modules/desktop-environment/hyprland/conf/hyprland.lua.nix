@@ -11,10 +11,6 @@ in ''
   ----- startup -----
   ${import ./startup.lua.nix}
 
-    ----- ilyamiro's serpantinum
-  ${builtins.readFile "${inputs.serpantinum}/compositors/hyprland/config/autostart.lua"}
-  ${builtins.readFile "${inputs.serpantinum}/compositors/hyprland/config/env.lua"}
-
   ----- basic hyprland variables -----
   ${builtins.readFile ./basic.lua}
 

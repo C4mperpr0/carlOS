@@ -56,9 +56,6 @@ in {
       hyprlock.enable = true;
     };
 
-    # enable ilyamiro's serpantinum
-    nixosModules.serpantinumConf.enable = true;
-
     # fix kde picker in hyprland issue
     environment.etc = {
       # https://discuss.kde.org/t/dolphin-doesnt-show-a-single-app-in-the-open-with-menu/14799

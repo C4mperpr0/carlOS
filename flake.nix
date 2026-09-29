@@ -39,11 +39,11 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    serpantinum = {
-      url = "github:ilyamiro/serpantinum";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    #minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    # serpantinum = {
+    #   url = "github:ilyamiro/serpantinum";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
+    # #minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs = inputs @ {...}: let
