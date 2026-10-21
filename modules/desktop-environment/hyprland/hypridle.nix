@@ -30,8 +30,8 @@ in ''
     then "# display timeout
     listener {
       timeout = ${toString confs.display-off-after}
-      on-timeout = hyprctl dispatch 'hl.dsp.dpms({ action = 0 })'
-      on-resume = hyprctl dispatch 'hl.dsp.dpms({ action = 1 })';
+      on-timeout = hyprctl dispatch 'hl.dsp.dpms({ action = \"off\" })'
+      on-resume = hyprctl dispatch 'hl.dsp.dpms({ action = \"on\" })';
     }"
     else "# Display-off timer deactivated. Set modules.hyprland.hypridle.display-off-after to activate it."
   }
