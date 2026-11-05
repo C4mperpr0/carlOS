@@ -39,6 +39,7 @@ in {
       tealdeer # compact man pages
       wifi-qr
       zenity # required for wifi-qr GUI
+      sops # working with secrets
     ];
 
     # enable v4l2loopback for wifi-qr
