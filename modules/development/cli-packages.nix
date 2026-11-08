@@ -59,28 +59,31 @@ in {
       ]
       ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
-    environment.systemPackages = with pkgs; [
-      git
-      nano
-      neovim
-      pkgs-unstable.nix-inspect
-      (python3.withPackages (ps:
-        # xontribs for xonsh
-          with ps; [
-            numpy
-            #xontrib-zoxide
-          ]))
+    nixpkgs.overlays = [
+      (final: prev: {neovim = inputs.nvim-dromedar.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dromedar;})
     ];
+
+    environment = {
+      variables.EDITOR = "nvim";
+      systemPackages = with pkgs; [
+        git
+        nano
+        neovim
+        pkgs-unstable.nix-inspect
+        (python3.withPackages (ps:
+          # xontribs for xonsh
+            with ps; [
+              numpy
+              #xontrib-zoxide
+            ]))
+      ];
+    };
 
     home-manager.users.${flake-confs.user.name} = {
       xdg = {
         configFile."/home/${flake-confs.user.name}/.bashrc".text = import ./dotfiles/bashrc.nix flake-confs.buildname flake-confs.user.name;
       };
     };
-
-    nixpkgs.overlays = [
-      (final: prev: {neovim = inputs.nvim-dromedar.packages.${pkgs.stdenv.hostPlatform.system}.nvim-dromedar;})
-    ];
 
     programs = {
       nix-index-database.comma.enable = true; # comma tool for nix shell temp bin automation

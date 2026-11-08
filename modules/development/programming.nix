@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  pkgs-unstable,
   config,
   flake-confs,
   ...
@@ -39,6 +38,7 @@ in {
     environment.systemPackages = with pkgs;
       [
         vscodium
+        teamtype # collaborative development
         wev # for detecting keycodes
         xdotool
         hoppscotch # debugging http requests
