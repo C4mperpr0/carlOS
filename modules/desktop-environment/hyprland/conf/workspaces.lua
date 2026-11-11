@@ -21,9 +21,9 @@ hl.bind("SUPER + SHIFT + s", hl.dsp.workspace.toggle_special("signal"))
 
 -- whatsapp
 -- hl.workspace_rule({ workspace = "special:whatsapp", on_created_empty = "karere" })
-hl.workspace_rule({ workspace = "special:whatsapp", on_created_empty = "firefox --new-window web.whatsapp.com" })
+hl.workspace_rule({ workspace = "special:whatsapp", on_created_empty = "whatsapp-electron" })
 hl.window_rule({
-    match = { class = "^(karere)$" },
+    match = { class = "^(whatsapp-electron)$" },
     workspace = "special:whatsapp"
 })
 hl.bind("SUPER + SHIFT + w", hl.dsp.workspace.toggle_special("whatsapp"))
